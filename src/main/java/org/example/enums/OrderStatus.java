@@ -1,5 +1,5 @@
 package org.example.enums;
 
 public enum OrderStatus {
-    OPEN,INPROGRESS,COMPLETED,CANCELLED;
+    OPEN,INPROGRESS,COMPLETED,CANCELLED
 }
