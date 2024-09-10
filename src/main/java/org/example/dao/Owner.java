@@ -8,18 +8,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="owners")
+@Getter
+@Setter
 public class Owner {
-    @Getter
-    @Setter
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    @Getter
-    @Setter
     @OneToOne
     private Person person;
-    @Getter
-    @Setter
     @OneToOne
     private Station station;
 

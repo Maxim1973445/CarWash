@@ -1,11 +1,16 @@
 package org.example.dao;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 import java.util.List;
 
 @Entity
 @Table(name="stations")
+@Getter
+@Setter
 public class Station {
     @Id
     private long id;
@@ -34,83 +39,5 @@ public class Station {
 
 
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getStationName() {
-        return stationName;
-    }
-
-    public void setStationName(String stationName) {
-        this.stationName = stationName;
-    }
-
-    public String getLifeCycle() {
-        return lifeCycle;
-    }
-
-    public void setLifeCycle(String lifeCycle) {
-        this.lifeCycle = lifeCycle;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getFirstPhone() {
-        return firstPhone;
-    }
-
-    public void setFirstPhone(String firstPhone) {
-        this.firstPhone = firstPhone;
-    }
-
-    public String getStationEmail() {
-        return stationEmail;
-    }
-
-    public void setStationEmail(String stationEmail) {
-        this.stationEmail = stationEmail;
-    }
-
-    public String getSecondPhone() {
-        return secondPhone;
-    }
-
-    public void setSecondPhone(String secondPhone) {
-        this.secondPhone = secondPhone;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public List<Client> getClients() {
-        return clients;
-    }
-
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
-    }
 }
