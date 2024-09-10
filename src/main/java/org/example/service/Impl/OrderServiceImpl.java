@@ -1,0 +1,53 @@
+package org.example.service.Impl;
+
+
+import org.example.dao.Client;
+import org.example.dao.Order;
+import org.example.dao.Station;
+import org.example.repository.OrderRepository;
+import org.example.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+@Service
+public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Override
+    public Order createOrder(Order order) {
+        return orderRepository.save(order);
+    }
+
+    @Override
+    public Order updateOrder(Order order) {
+        return orderRepository.save(order);
+    }
+
+    @Override
+    public void deleteOrder(long orderId) {
+        orderRepository.deleteById(orderId);
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @Override
+    public Order getOrderById(long orderId) {
+        return orderRepository.findById(orderId).orElse(null);
+    }
+
+    @Override
+    public Client getClientByOrderId(long orderId) {
+        return orderRepository.findById(orderId).get().getClient();
+    }
+
+    @Override
+    public Station getStationByOrderId(long orderId) {
+        return orderRepository.findStationById(orderId).orElse(null);
+    }
+}
