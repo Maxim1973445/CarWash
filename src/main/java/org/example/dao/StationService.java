@@ -14,7 +14,7 @@ import java.util.List;
 public class StationService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "service_name")
     private String name;
     @Column(name="price")

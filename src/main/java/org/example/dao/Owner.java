@@ -14,7 +14,7 @@ public class Owner {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @OneToOne
     private Person person;
     @OneToOne

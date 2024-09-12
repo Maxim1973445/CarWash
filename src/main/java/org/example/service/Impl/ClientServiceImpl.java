@@ -3,32 +3,46 @@ package org.example.service.Impl;
 
 import org.example.dao.Client;
 import org.example.dao.Order;
+import org.example.dao.Person;
 import org.example.dao.Station;
 import org.example.repository.ClientRepository;
+import org.example.repository.PersonRepository;
 import org.example.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService {
 
+    private final ClientRepository clientRepository;
+    private final PersonRepository personRepository;
+
     @Autowired
-    private ClientRepository clientRepository;
+    public ClientServiceImpl(ClientRepository clientRepository, PersonRepository personRepository) {
+        this.clientRepository = clientRepository;
+        this.personRepository = personRepository;
+    }
     @Override
     public Client getClientById(long id) {
         return clientRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Client getClientByPhone(int phone) throws ChangeSetPersister.NotFoundException {
+    public Client getClientByPhone(String phone) throws ChangeSetPersister.NotFoundException {
         return clientRepository.findClientByPhone(phone).orElseThrow(()-> new ChangeSetPersister.NotFoundException());
     }
 
     @Override
     public List<Client> getClientByUsername(String username) {
-        return clientRepository.findClientByName(username);
+        Person person = personRepository.findByLogin(username).orElse(null);
+        if(person == null) {
+            return null;
+        }
+        return clientRepository.findAll();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package org.example.service.Impl;
 
+import lombok.AllArgsConstructor;
 import org.example.dao.Owner;
 import org.example.dao.Person;
 import org.example.dao.Station;
@@ -8,10 +9,18 @@ import org.example.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class OwnerServiceImpl implements OwnerService {
+
+    private final OwnerRepository ownerRepository;
     @Autowired
-    private OwnerRepository ownerRepository;
+    public OwnerServiceImpl(OwnerRepository ownerRepository) {
+        this.ownerRepository = ownerRepository;
+    }
+
     @Override
     public Owner createOwner(Owner owner) {
         return ownerRepository.save(owner);

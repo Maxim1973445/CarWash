@@ -1,5 +1,5 @@
 package org.example.enums;
 
-public enum PersonType {
+public enum RoleType {
     ADMIN,CLIENT,OWNER
 }

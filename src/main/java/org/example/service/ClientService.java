@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ClientService {
     Client getClientById(long id);
-    Client getClientByPhone(int phone) throws ChangeSetPersister.NotFoundException;
+    Client getClientByPhone(String phone) throws ChangeSetPersister.NotFoundException;
     List<Client> getClientByUsername(String username);
     List<Client> getAllClients();
     Client createClient(Client client);

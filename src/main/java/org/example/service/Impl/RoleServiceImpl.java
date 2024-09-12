@@ -1,5 +1,6 @@
 package org.example.service.Impl;
 
+import lombok.AllArgsConstructor;
 import org.example.dao.Person;
 import org.example.dao.Role;
 import org.example.repository.RoleRepository;
@@ -7,11 +8,17 @@ import org.example.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
+
+    private final RoleRepository roleRepository;
     @Autowired
-    private RoleRepository roleRepository;
+    public RoleServiceImpl(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
     @Override
     public Role createRole(Role role) {
         return roleRepository.save(role);

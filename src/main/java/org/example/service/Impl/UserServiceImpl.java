@@ -1,27 +1,31 @@
 package org.example.service.Impl;
 
-
-import org.example.dao.Client;
-import org.example.dao.Person;
-import org.example.dao.Role;
-import org.example.enums.PersonType;
+import org.example.dao.*;
+import org.example.enums.RoleType;
 import org.example.repository.PersonRepository;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-
+@Transactional
 public class UserServiceImpl implements UserDetailsService, UserService {
-    @Autowired
-    private PersonRepository personRepository;
+
+    private final PersonRepository personRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return personRepository.findByLogin(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
+    @Autowired
+    public UserServiceImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
+
 
     @Override
     public Person createUser(Person person) {
@@ -55,22 +59,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public List<Person> getAllUsers() {
-
         return personRepository.findAll();
     }
 
     @Override
     public List<Role> getRolesByUserId(long id) {
         return personRepository.findRolesById(id);
-    }
-
-    @Override
-    public List<PersonType> getPersonTypesByPersonId(long id) {
-        return personRepository.findPersonTypesById(id);
-    }
-
-    @Override
-    public List<Client> getClientsById(long id) {
-        return List.of();
     }
 }

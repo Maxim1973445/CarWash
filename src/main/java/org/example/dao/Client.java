@@ -1,11 +1,10 @@
 package org.example.dao;
 
-
-
 import lombok.*;
 import org.example.enums.CarType;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -17,20 +16,15 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-
-    @Column(name="name")
-    String name;
-
+    private Long id;
     @Column(name="phone")
-    int phone;
-
+    private String phone;
     @Column(name="car_number")
     private String carNumber;
-
     @Column(name="car_type")
     private CarType carType;
-
+    @Column(name="car_mark")
+    private CarType carMark;
     @ManyToOne
     private Person person;
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
@@ -40,7 +34,4 @@ public class Client {
     @JoinTable(name="Client_stations",joinColumns = @JoinColumn(name="client_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="station_id",referencedColumnName = "id"))
     private Set<Station> stations;
-
-
-
 }

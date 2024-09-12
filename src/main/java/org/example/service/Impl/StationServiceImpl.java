@@ -1,20 +1,30 @@
 package org.example.service.Impl;
 
 
+import lombok.AllArgsConstructor;
 import org.example.dao.Client;
 import org.example.dao.Order;
 import org.example.dao.Owner;
 import org.example.dao.Station;
+import org.example.repository.ClientRepository;
 import org.example.repository.StationRepository;
 import org.example.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Service
+@Transactional
 public class StationServiceImpl implements StationService {
+
+    private final StationRepository stationRepository;
+    private final ClientRepository clientRepository;
     @Autowired
-    private StationRepository stationRepository;
+    public StationServiceImpl(StationRepository stationRepository, ClientRepository clientRepository) {
+        this.stationRepository = stationRepository;
+        this.clientRepository = clientRepository;
+    }
 
     @Override
     public Station createStation(Station station) {

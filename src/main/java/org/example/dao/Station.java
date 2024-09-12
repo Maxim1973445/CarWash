@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class Station {
     @Id
-    private long id;
+    private Long id;
     @Column(name="station_name")
     private String stationName;
     @Column(name="life_cycle")
