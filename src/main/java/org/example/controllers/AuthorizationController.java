@@ -1,4 +1,4 @@
-package org.example;
+package org.example.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AuthorizationController {
 
     // Метод для отображения главной страницы
-    @GetMapping("/")
-    public String mainPage(Model model) {
-        return "main"; // Возвращает шаблон авторизации
-    }
+//    @GetMapping("/")
+//    public String mainPage(Model model) {
+//        return "main"; // Возвращает шаблон авторизации
+//    }
 
 
     // Метод для отображения страницы авторизации

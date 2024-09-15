@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.enums.OrderStatus;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity

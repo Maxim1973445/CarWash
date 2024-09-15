@@ -36,3 +36,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/dataSources.local.xml
+/.idea/dataSources.xml
+/.idea/dataSources/fbfc9419-4ed6-4f1d-92ab-d72760ff3d20/storage_v2/_src_/database/carwashbd.9cPsEQ.meta
+/.idea/dataSources/fbfc9419-4ed6-4f1d-92ab-d72760ff3d20/storage_v2/_src_/database/carwashbd.9cPsEQ/schema/public.abK9xQ.meta
+/.idea/uiDesigner.xml
+/.idea/dataSources/fbfc9419-4ed6-4f1d-92ab-d72760ff3d20.xml

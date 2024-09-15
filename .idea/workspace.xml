@@ -5,18 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="Ещё">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/CarWashLogo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/a1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/AuthorizationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/CarWashLogo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/authorization.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/authorization.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/clientaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/clientaccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/StationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registrationowner.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registrationowner.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,18 +51,18 @@
     </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "risevetrov"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;risevetrov&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Maxim1973445/CarWash.git",
-    "accountId": "b9cdeee8-2da1-45cc-98cd-0c5ecaaf7a78"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Maxim1973445/CarWash.git&quot;,
+    &quot;accountId&quot;: &quot;30c70a99-1926-4e51-9d70-0d1d65fdfbb2&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/org/example/Car.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -81,7 +85,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.Car.executor": "Run",
-    "git-widget-placeholder": "Front__mainPage",
+    "git-widget-placeholder": "IOMaksimenko",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sveta/Desktop/java/CarWash2",
     "node.js.detected.package.eslint": "true",
@@ -93,7 +97,13 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "settings.sync",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -131,8 +141,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
       </set>
     </attachedChunks>
   </component>
@@ -155,7 +165,19 @@
       <workItem from="1725960276320" duration="1432000" />
       <workItem from="1725989348688" duration="4680000" />
       <workItem from="1726202357591" duration="3862000" />
+      <workItem from="1726390969476" duration="1220000" />
+      <workItem from="1726395073692" duration="298000" />
+      <workItem from="1726395657609" duration="7627000" />
     </task>
+    <task id="LOCAL-00001" summary="Ещё">
+      <option name="closed" value="true" />
+      <created>1726322945960</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726322945960</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,19 +188,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Front_mainPage" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
