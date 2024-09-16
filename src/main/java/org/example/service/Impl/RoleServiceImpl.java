@@ -21,11 +21,18 @@ public class RoleServiceImpl implements RoleService {
     }
     @Override
     public Role createRole(Role role) {
+        Role existRole = roleRepository.findByRoleType(role.getRoleType());
+        if(existRole!=null) {
+            return existRole;
+        }
         return roleRepository.save(role);
     }
 
     @Override
     public Role updateRole(Role role) {
+        if(roleRepository.existsById(role.getId())) {
+            return roleRepository.findById(role.getId()).get();
+        }
         return roleRepository.save(role);
     }
 

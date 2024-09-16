@@ -1,8 +1,8 @@
 package org.example.service.Impl;
 
 
-import org.example.dao.Client;
 import org.example.dao.Order;
+import org.example.dao.Person;
 import org.example.dao.Station;
 import org.example.repository.OrderRepository;
 import org.example.service.OrderService;
@@ -47,8 +47,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Client getClientByOrderId(long orderId) {
-        return orderRepository.findById(orderId).get().getClient();
+    public Person getPersonByOrderId(long orderId) {
+        return orderRepository.findById(orderId).get().getPerson();
     }
 
     @Override

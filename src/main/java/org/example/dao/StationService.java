@@ -21,5 +21,4 @@ public class StationService {
     private int price;
     @OneToMany(mappedBy = "service")
     private List<Order> orders;
-
 }

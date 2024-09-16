@@ -30,12 +30,12 @@ public class Station {
     private String coordinates;
     @Column(name="file_path")
     private String filePath;
-    @OneToOne
-    private Owner owner;
-    @OneToMany(mappedBy = "station", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Person owner;
+    @OneToMany(mappedBy = "station")
     private List<Order> orders;
-    @ManyToMany(mappedBy = "stations")
-    private List<Client> clients;
+    @OneToMany(mappedBy = "station")
+    private List<Person> clients;
 
 
 

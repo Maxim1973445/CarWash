@@ -1,9 +1,6 @@
 package org.example.service;
 
-import org.example.dao.Client;
-import org.example.dao.Order;
-import org.example.dao.Owner;
-import org.example.dao.Station;
+import org.example.dao.*;
 
 import java.util.List;
 
@@ -13,8 +10,7 @@ public interface StationService {
     List<Station> getStations();
     void deleteStation(long id);
     void updateStation(Station station);
-    Owner getOwnerByStationId(long id);
+    Person getOwnerByStationId(long id);
     List<Order> getOrdersByStationId(long id);
-    List<Client> getClientsByStationId(long id);
-
+    List<Person> getClientsByStationId(long id);
 }

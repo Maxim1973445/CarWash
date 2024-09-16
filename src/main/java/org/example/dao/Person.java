@@ -38,13 +38,16 @@ public class Person implements UserDetails {
     @Column(unique = true,name="email")
     private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="Person_Role",joinColumns = @JoinColumn(name="person_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name="role_id",referencedColumnName = "id"))
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "person")
-    private Set<Car> cars;
+    private Set<Order> orders;
+
+    @ManyToOne
+    private Station station;
 
 
     @Override

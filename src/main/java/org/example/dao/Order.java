@@ -21,11 +21,11 @@ public class Order {
     private LocalDateTime endDate;
     private OrderStatus orderStatus;
     private String orderDate;
-    @ManyToOne
-    private Client client;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Person person;
+    @ManyToOne(cascade = CascadeType.ALL)
     private StationService service;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Station station;
 }
 

@@ -1,12 +1,10 @@
 package org.example.service.Impl;
 
 
-import lombok.AllArgsConstructor;
-import org.example.dao.Client;
+import org.example.dao.Car;
 import org.example.dao.Order;
-import org.example.dao.Owner;
+import org.example.dao.Person;
 import org.example.dao.Station;
-import org.example.repository.ClientRepository;
 import org.example.repository.StationRepository;
 import org.example.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +17,10 @@ import java.util.List;
 public class StationServiceImpl implements StationService {
 
     private final StationRepository stationRepository;
-    private final ClientRepository clientRepository;
+
     @Autowired
-    public StationServiceImpl(StationRepository stationRepository, ClientRepository clientRepository) {
+    public StationServiceImpl(StationRepository stationRepository) {
         this.stationRepository = stationRepository;
-        this.clientRepository = clientRepository;
     }
 
     @Override
@@ -53,7 +50,7 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public Owner getOwnerByStationId(long id) {
+    public Person getOwnerByStationId(long id) {
         return stationRepository.findById(id).get().getOwner();
     }
 
@@ -63,7 +60,7 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public List<Client> getClientsByStationId(long id) {
+    public List<Person> getClientsByStationId(long id) {
         return stationRepository.findById(id).get().getClients();
     }
 }

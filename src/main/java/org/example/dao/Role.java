@@ -18,7 +18,7 @@ public class Role implements GrantedAuthority {
     private String description;
     @ManyToMany(mappedBy="roles")
     private List<Person> persons;
-    @Column(name="roleType")
+    @Column(name="role_type", nullable=false, unique=true)
     public RoleType roleType;
 
     @Override
