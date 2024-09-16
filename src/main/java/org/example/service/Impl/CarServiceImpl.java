@@ -32,7 +32,6 @@ public class CarServiceImpl implements CarService {
     }
 
     public List<Car> getCarsByCarType(CarType type) {
-        
         return carRepository.findCarByCarType(type);
     }
 
@@ -42,17 +41,28 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car createCar(Car Car) {
-        return carRepository.save(Car);
+    public Car createCar(Car car) {
+        Car findCar = carRepository.findCarByCarNumber(car.getCarNumber());
+        if(car.getPerson()==null)
+            return null;
+        if(findCar != null){
+            return findCar;
+        }
+        return carRepository.save(car);
     }
 
     @Override
-    public Car updateCar(Car Car) {
-        return carRepository.save(Car);
+    public Car updateCar(Car car) {
+        if(carRepository.findCarByCarNumber(car.getCarNumber())!=null) {
+            return carRepository.save(car);
+        }
+        return null;
     }
 
     @Override
     public void deleteCar(long id) {
+        if(carRepository.findCarById(id).isEmpty())
+            throw new IllegalArgumentException("Автомобиля с данным номером нет в БД");
         carRepository.deleteById(id);
     }
 }

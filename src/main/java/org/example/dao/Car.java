@@ -14,7 +14,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="car_number")
+    @Column(name="car_number", unique = true,nullable = false)
     private String carNumber;
     @Column(name="car_make")
     private String make;
@@ -23,6 +23,6 @@ public class Car {
     @Column(name="car_type")
     private CarType carType;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Person person;
 }

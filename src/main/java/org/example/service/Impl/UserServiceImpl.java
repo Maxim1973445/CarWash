@@ -1,6 +1,7 @@
 package org.example.service.Impl;
 
 import org.example.dao.*;
+import org.example.enums.RoleType;
 import org.example.repository.PersonRepository;
 import org.example.service.UserService;
 import org.slf4j.Logger;
@@ -78,10 +79,5 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     @Override
     public List<Person> getAllUsers() {
         return personRepository.findAll();
-    }
-
-    @Override
-    public List<Role> getRolesByUserId(long id) {
-        return personRepository.findRolesById(id);
     }
 }

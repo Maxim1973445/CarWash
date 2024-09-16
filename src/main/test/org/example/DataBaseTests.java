@@ -2,23 +2,17 @@ package org.example;
 
 import org.example.dao.Car;
 import org.example.dao.Person;
-import org.example.dao.Role;
 import org.example.enums.CarType;
 import org.example.enums.RoleType;
 import org.example.repository.CarRepository;
 import org.example.repository.PersonRepository;
-import org.example.repository.RoleRepository;
-import org.example.service.CarService;
 import org.example.service.Impl.CarServiceImpl;
-import org.example.service.Impl.RoleServiceImpl;
 import org.example.service.Impl.UserServiceImpl;
-import org.example.service.RoleService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -29,11 +23,9 @@ public class DataBaseTests {
     @Autowired
     private CarRepository carRepository;
     @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
     private CarServiceImpl carServiceImpl;
     @Autowired
-    private RoleServiceImpl roleServiceImpl;
+    private UserServiceImpl userServiceImpl;
 
 
     @Test
@@ -59,21 +51,22 @@ public class DataBaseTests {
         person.setLastName("Ivanov");
         person.setEmail("vanya@gmail.com");
         person.setDateOfBirth(new Date(1990,4,12));
-        car.setPerson(person);
-        Role admin = roleRepository.findByRoleType(RoleType.ADMIN);
-        HashSet roles = new HashSet<>();
-        roles.add(admin);
-        person.setRoles(roles);
-        userService.createUser(person);
+        person.setRole(RoleType.ADMIN);
+        Person user = userServiceImpl.getUserByEmail(person.getEmail());
+        if(user ==null)
+            user = userService.createUser(person);
+        car.setPerson(user);
         carServiceImpl.createCar(car);
     }
     @Test
-    public void insertRoleTest() {
-        Role admin = new Role();
-        roleServiceImpl = new RoleServiceImpl(roleRepository);
-        admin.setRoleType(RoleType.ADMIN);
-        admin.setDescription("Админ");
-        HashSet roles = new HashSet<>();
-        roleServiceImpl.createRole(admin);
+    public void getPersonsByStationIdTest() {
+        CarServiceImpl carServiceImpl = new CarServiceImpl(carRepository);
+        Car car = new Car();
+        car.setCarNumber("351");
+        car.setCarType(CarType.CONVERTIBLE);
+        car.setMake("KIA");
+        car.setModel("stinger");
+        carServiceImpl.createCar(car);
+
     }
 }

@@ -34,8 +34,6 @@ public class Station {
     private Person owner;
     @OneToMany(mappedBy = "station")
     private List<Order> orders;
-    @OneToMany(mappedBy = "station")
-    private List<Person> clients;
 
 
 

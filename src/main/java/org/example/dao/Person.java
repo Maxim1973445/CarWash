@@ -3,12 +3,14 @@ package org.example.dao;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.enums.RoleType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -38,21 +40,20 @@ public class Person implements UserDetails {
     @Column(unique = true,name="email")
     private String email;
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="Person_Role",joinColumns = @JoinColumn(name="person_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name="role_id",referencedColumnName = "id"))
-    private Set<Role> roles;
+
+    @Column(name="role")
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 
     @OneToMany(mappedBy = "person")
     private Set<Order> orders;
 
-    @ManyToOne
-    private Station station;
-
+    @OneToMany(mappedBy = "person")
+    private List<Car> cars;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
+        return List.of(this.role);
     }
 
     @Override

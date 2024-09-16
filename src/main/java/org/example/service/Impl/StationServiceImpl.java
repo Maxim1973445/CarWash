@@ -12,15 +12,19 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class StationServiceImpl implements StationService {
 
     private final StationRepository stationRepository;
+    private final OrderServiceImpl orderServiceImpl;
 
     @Autowired
-    public StationServiceImpl(StationRepository stationRepository) {
+    public StationServiceImpl(StationRepository stationRepository, OrderServiceImpl orderServiceImpl) {
         this.stationRepository = stationRepository;
+        this.orderServiceImpl = orderServiceImpl;
     }
 
     @Override
@@ -61,6 +65,8 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public List<Person> getClientsByStationId(long id) {
-        return stationRepository.findById(id).get().getClients();
+        List<Order> orders = orderServiceImpl.getAllOrders();
+        List<Person> clients = orders.stream().map(Order::getPerson).toList();
+        return clients;
     }
 }

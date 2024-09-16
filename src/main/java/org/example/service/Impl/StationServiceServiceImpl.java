@@ -33,17 +33,25 @@ public class StationServiceServiceImpl implements StationServiceService {
 
     @Override
     public StationService createStationService(StationService stationService) {
+        if (stationServiceRepository.existsById(stationService.getId())) {
+            return stationServiceRepository.findById(stationService.getId()).get();
+        }
         return stationServiceRepository.save(stationService);
     }
 
     @Override
     public StationService updateStationService(StationService stationService) {
-        return stationServiceRepository.save(stationService);
+        if (stationServiceRepository.existsById(stationService.getId())) {
+            return stationServiceRepository.save(stationService);
+        }
+        return null;
     }
 
     @Override
     public void deleteStationServiceById(long id) {
-        stationServiceRepository.deleteById(id);
+        if (stationServiceRepository.existsById(id)) {
+            stationServiceRepository.deleteById(id);
+        }
     }
 
 }

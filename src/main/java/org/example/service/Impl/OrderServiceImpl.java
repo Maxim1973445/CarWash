@@ -33,7 +33,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void deleteOrder(long orderId) {
-        orderRepository.deleteById(orderId);
+        if(orderRepository.existsById(orderId)) {
+            orderRepository.deleteById(orderId);
+        }
     }
 
     @Override
@@ -48,11 +50,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Person getPersonByOrderId(long orderId) {
-        return orderRepository.findById(orderId).get().getPerson();
+        if(orderRepository.existsById(orderId)) {
+            return orderRepository.findById(orderId).get().getPerson();
+        }
+        return null;
     }
 
     @Override
     public Station getStationByOrderId(long orderId) {
-        return orderRepository.findStationById(orderId).orElse(null);
+        if(orderRepository.existsById(orderId)) {
+            return orderRepository.findById(orderId).get().getStation();
+        }
+        return null;
     }
 }
