@@ -1,7 +1,7 @@
 package org.example.service.Impl;
 
 
-import org.example.dao.Car;
+
 import org.example.dao.Order;
 import org.example.dao.Person;
 import org.example.dao.Station;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -66,7 +65,6 @@ public class StationServiceImpl implements StationService {
     @Override
     public List<Person> getClientsByStationId(long id) {
         List<Order> orders = orderServiceImpl.getAllOrders();
-        List<Person> clients = orders.stream().map(Order::getPerson).toList();
-        return clients;
+        return orders.stream().map(Order::getPerson).toList();
     }
 }

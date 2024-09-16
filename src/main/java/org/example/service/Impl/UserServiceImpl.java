@@ -1,13 +1,13 @@
 package org.example.service.Impl;
 
 import org.example.dao.*;
-import org.example.enums.RoleType;
 import org.example.repository.PersonRepository;
 import org.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,9 +20,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
     private final PersonRepository personRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return personRepository.findByLogin(username).orElseThrow(() -> new UsernameNotFoundException(username));
+        return personRepository.findPersonEntityByLogin(username).orElseThrow(()->new UsernameNotFoundException(username));
     }
 
     @Autowired
@@ -35,6 +39,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public Person createUser(Person person) {
         Person personByEmail = personRepository.findByEmail(person.getEmail()).orElse(null);
         if (personByEmail==null) {
+            String encriptPass = passwordEncoder.encode(person.getPassword());
+            person.setPassword(encriptPass);
             return personRepository.save(person);
         }
         log.error("Пользователь с таким email уже существует");

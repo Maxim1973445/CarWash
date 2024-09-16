@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 
 public enum RoleType implements GrantedAuthority {
 
@@ -22,6 +19,6 @@ public enum RoleType implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return this.getCode();
+        return name();
     }
 }

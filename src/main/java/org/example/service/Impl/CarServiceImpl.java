@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService {
     }
 
     public List<Car> getCarsByCarType(CarType type) {
-        return carRepository.findCarByCarType(type);
+        return carRepository.findCarsByCarType(type);
     }
 
     @Override
