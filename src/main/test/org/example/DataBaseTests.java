@@ -5,8 +5,12 @@ import org.example.dao.Person;
 import org.example.enums.CarType;
 import org.example.enums.RoleType;
 import org.example.repository.CarRepository;
+import org.example.repository.OrderRepository;
 import org.example.repository.PersonRepository;
+import org.example.repository.StationRepository;
 import org.example.service.Impl.CarServiceImpl;
+import org.example.service.Impl.StationServiceImpl;
+import org.example.service.Impl.StationServiceServiceImpl;
 import org.example.service.Impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,14 @@ public class DataBaseTests {
     private CarServiceImpl carServiceImpl;
     @Autowired
     private UserServiceImpl userServiceImpl;
+    @Autowired
+    private StationServiceServiceImpl stationServiceServiceImpl;
+    @Autowired
+    private StationServiceImpl stationServiceImpl;
+    @Autowired
+    private StationRepository stationRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
 
     @Test
@@ -67,6 +79,11 @@ public class DataBaseTests {
         car.setMake("KIA");
         car.setModel("stinger");
         carServiceImpl.createCar(car);
+
+    }
+    @Test
+    public void insertStationTest(){
+        StationServiceImpl stationService = new StationServiceImpl(stationRepository, orderRepository);
 
     }
 }

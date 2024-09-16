@@ -5,6 +5,7 @@ package org.example.service.Impl;
 import org.example.dao.Order;
 import org.example.dao.Person;
 import org.example.dao.Station;
+import org.example.repository.OrderRepository;
 import org.example.repository.StationRepository;
 import org.example.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,12 @@ import java.util.List;
 public class StationServiceImpl implements StationService {
 
     private final StationRepository stationRepository;
-    private final OrderServiceImpl orderServiceImpl;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public StationServiceImpl(StationRepository stationRepository, OrderServiceImpl orderServiceImpl) {
+    public StationServiceImpl(StationRepository stationRepository, OrderRepository orderRepository) {
         this.stationRepository = stationRepository;
-        this.orderServiceImpl = orderServiceImpl;
+        this.orderRepository = orderRepository;
     }
 
     @Override
@@ -64,7 +65,7 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public List<Person> getClientsByStationId(long id) {
-        List<Order> orders = orderServiceImpl.getAllOrders();
+        List<Order> orders = orderRepository.findAll();
         return orders.stream().map(Order::getPerson).toList();
     }
 }
