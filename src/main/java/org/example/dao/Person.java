@@ -3,68 +3,57 @@ package org.example.dao;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.enums.PersonType;
+import org.example.enums.RoleType;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.*;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.*;
 
+@Getter
+@Setter
 @Entity
-@Table(name="persons")
+@Table(name="Persons")
 public class Person implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+
+    private Long id;
     @Column(unique=true, nullable=false,name="login")
     private String login;
-    @Getter
-    @Setter
     @Column(name="pass")
     private String password;
-    @Getter
-    @Setter
+
     @Column(name="first_name")
     private String firstName;
-    @Getter
-    @Setter
     @Column(name="last_name")
     private String lastName;
     @Column(name="birth_date")
-    @Getter
-    @Setter
     private Date dateOfBirth;
-    @Getter
-    @Setter
+
     @Column(name="phone")
     private String phone;
-    @Getter
-    @Setter
+
     @Column(unique = true,name="email")
     private String email;
-    @Getter
-    @Setter
-    @ManyToMany
-    @JoinTable(name="Person_Role",joinColumns = @JoinColumn(name="person_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name="role_id",referencedColumnName = "id"))
-    private Set<Role> roles;
-    @Getter
-    @Setter
+
+
+    @Column(name="role")
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
+
     @OneToMany(mappedBy = "person")
-    private Set<Client> clients;
+    private Set<Order> orders;
 
-    @Getter
-    @Setter
-    private PersonType personType;
-
+    @OneToMany(mappedBy = "person")
+    private List<Car> cars;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.toString()));
+        return authorities;
     }
 
     @Override
@@ -90,6 +79,11 @@ public class Person implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return login+" "+phone+" "+email;
     }
 
 }

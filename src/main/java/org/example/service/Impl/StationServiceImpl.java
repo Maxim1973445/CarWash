@@ -1,20 +1,31 @@
 package org.example.service.Impl;
 
 
-import org.example.dao.Client;
+
 import org.example.dao.Order;
-import org.example.dao.Owner;
+import org.example.dao.Person;
 import org.example.dao.Station;
+import org.example.repository.OrderRepository;
 import org.example.repository.StationRepository;
 import org.example.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
 @Service
+@Transactional
 public class StationServiceImpl implements StationService {
+
+    private final StationRepository stationRepository;
+    private final OrderRepository orderRepository;
+
     @Autowired
-    private StationRepository stationRepository;
+    public StationServiceImpl(StationRepository stationRepository, OrderRepository orderRepository) {
+        this.stationRepository = stationRepository;
+        this.orderRepository = orderRepository;
+    }
 
     @Override
     public Station createStation(Station station) {
@@ -43,7 +54,7 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public Owner getOwnerByStationId(long id) {
+    public Person getOwnerByStationId(long id) {
         return stationRepository.findById(id).get().getOwner();
     }
 
@@ -53,7 +64,8 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public List<Client> getClientsByStationId(long id) {
-        return stationRepository.findById(id).get().getClients();
+    public List<Person> getClientsByStationId(long id) {
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream().map(Order::getPerson).toList();
     }
 }

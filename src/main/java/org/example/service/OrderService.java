@@ -10,6 +10,6 @@ public interface OrderService {
     void deleteOrder(long orderId);
     List<Order> getAllOrders();
     Order getOrderById(long orderId);
-    Client getClientByOrderId(long orderId);
+    Person getPersonByOrderId(long orderId);
     Station getStationByOrderId(long orderId);
 }
