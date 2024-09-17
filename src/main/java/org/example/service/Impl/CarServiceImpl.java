@@ -27,13 +27,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car getCarByCarNumber(String number) throws ChangeSetPersister.NotFoundException {
+    public Car getCarByCarNumber(String number) {
         return carRepository.findCarByCarNumber(number);
     }
 
     public List<Car> getCarsByCarType(CarType type) {
         return carRepository.findCarsByCarType(type);
     }
+
 
     @Override
     public List<Car> getAllCars() {

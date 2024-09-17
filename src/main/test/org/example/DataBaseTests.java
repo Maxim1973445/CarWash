@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.dao.Car;
 import org.example.dao.Person;
+import org.example.dao.Station;
 import org.example.enums.CarType;
 import org.example.enums.RoleType;
 import org.example.repository.CarRepository;
@@ -84,6 +85,14 @@ public class DataBaseTests {
     @Test
     public void insertStationTest(){
         StationServiceImpl stationService = new StationServiceImpl(stationRepository, orderRepository);
-
+        Station station = new Station();
+        station.setAddress("Екатеринбург, ул. Вавилова 12");
+        station.setStationName("AquaMash");
+        station.setStationEmail("aquamash@gmail.com");
+        station.setLifeCycle("8:00-23:00");
+        station.setFirstPhone("234-45-23");
+        station.setCoordinates("56.865210, 60.640468");
+        station.setFilePath("/image.png");
+        stationService.createStation(station);
     }
 }
