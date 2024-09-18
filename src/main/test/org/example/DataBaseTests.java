@@ -24,10 +24,6 @@ import java.util.List;
 @SpringBootTest
 public class DataBaseTests {
     @Autowired
-    private PersonRepository personRepository;
-    @Autowired
-    private CarRepository carRepository;
-    @Autowired
     private CarServiceImpl carServiceImpl;
     @Autowired
     private UserServiceImpl userServiceImpl;
@@ -36,14 +32,10 @@ public class DataBaseTests {
     @Autowired
     private StationServiceImpl stationServiceImpl;
     @Autowired
-    private StationRepository stationRepository;
-    @Autowired
-    private OrderRepository orderRepository;
-
+    private OrderServiceImpl orderServiceImpl;
 
     @Test
     public void getPersonsTest() {
-        UserServiceImpl userServiceImpl = new UserServiceImpl(personRepository);
         List<Person> persons = userServiceImpl.getAllUsers();
         for (Person person : persons) {
             System.out.println(person);
@@ -51,7 +43,6 @@ public class DataBaseTests {
     }
     @Test
     public void insertCarTest() {
-        UserServiceImpl userService = new UserServiceImpl(personRepository);
         Car car = new Car();
         car.setCarNumber("343");
         car.setCarType(CarType.CROSSOVER);
@@ -67,13 +58,12 @@ public class DataBaseTests {
         person.setRole(RoleType.ADMIN);
         Person user = userServiceImpl.getUserByEmail(person.getEmail());
         if(user ==null)
-            user = userService.createUser(person);
+            user = userServiceImpl.createUser(person);
         car.setPerson(user);
         carServiceImpl.createCar(car);
     }
     @Test
     public void getPersonsByStationIdTest() {
-        CarServiceImpl carServiceImpl = new CarServiceImpl(carRepository);
         Car car = new Car();
         car.setCarNumber("351");
         car.setCarType(CarType.CONVERTIBLE);
@@ -84,7 +74,6 @@ public class DataBaseTests {
     }
     @Test
     public void insertStationTest(){
-        StationServiceImpl stationService = new StationServiceImpl(stationRepository, orderRepository);
         Station station = new Station();
         station.setAddress("Екатеринбург, ул. Вавилова 12");
         station.setStationName("AquaMash");
@@ -93,11 +82,10 @@ public class DataBaseTests {
         station.setFirstPhone("234-45-23");
         station.setCoordinates("56.865210, 60.640468");
         station.setFilePath("/image.png");
-        stationService.createStation(station);
+        stationServiceImpl.createStation(station);
     }
     @Test
     public void insertOrderTest(){
-        OrderServiceImpl orderService = new OrderServiceImpl(orderRepository);
         Order order = new Order();
         order.setPerson(userServiceImpl.getUserByEmail("vanya@gmail.com"));
         order.setStation(stationServiceImpl.getStationById(4));
@@ -105,6 +93,18 @@ public class DataBaseTests {
         order.setOrderDate(LocalDateTime.now().toString());
         order.setStartDate(LocalDateTime.now());
         order.setOrderStatus(OrderStatus.OPEN);
-        orderService.createOrder(order);
+        orderServiceImpl.createOrder(order);
+    }
+    @Test
+    public void getPersonByOrderIdTest(){
+        Order order = orderServiceImpl.getOrderById(1);
+        Person person = order.getPerson();
+    }
+    @Test
+    public void updateCarTest(){
+        Car car = carServiceImpl.getCarByCarNumber("343");
+        car.setCarType(CarType.SUV);
+        carServiceImpl.updateCar(car);
+
     }
 }

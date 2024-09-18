@@ -21,6 +21,7 @@ public class Car {
     @Column(name="car_model")
     private String model;
     @Column(name="car_type")
+    @Enumerated(EnumType.STRING)
     private CarType carType;
 
     @ManyToOne

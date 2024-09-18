@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
     Person createUser(Person person);
-    Person updateUser(Person person);
+    Boolean updateUser(Person person);
     void deleteUserById(Long id);
     Person getUserByEmail(String email);
     Person getUserById(long id);

@@ -30,11 +30,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrder(Order order) {
-        if(orderRepository.existsById(order.getId())) {
-            return orderRepository.save(order);
+    public Boolean updateOrder(Order order) throws Exception {
+        if (orderRepository.existsById(order.getId())) {
+            orderRepository.save(order);
+            return true;
         }
-        throw new IllegalArgumentException("Order not found");
+        return false;
     }
 
     @Override

@@ -5,8 +5,9 @@ import org.example.dao.*;
 import org.example.enums.CarType;
 import org.example.repository.CarRepository;
 import org.example.service.CarService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,6 +16,7 @@ import java.util.List;
 @Transactional
 public class CarServiceImpl implements CarService {
 
+    private static final Logger log = LoggerFactory.getLogger(CarServiceImpl.class);
     private final CarRepository carRepository;
 
     @Autowired
@@ -43,21 +45,35 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car createCar(Car car) {
-        Car findCar = carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null);
-        if(car.getPerson()==null)
+        try {
+            if (car.getCarNumber() == null || car.getCarType() == null)
+                throw new IllegalArgumentException("Car number and type are required");
+            Car findCar = carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null);
+            if (car.getPerson() == null)
+                return null;
+            if (findCar != null) {
+                return findCar;
+            }
+            return carRepository.save(car);
+        }catch (RuntimeException e) {
+            log.error(e.getMessage());
             return null;
-        if(findCar != null){
-            return findCar;
         }
-        return carRepository.save(car);
     }
 
     @Override
-    public Car updateCar(Car car) {
-        if(carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null)!=null) {
-            return carRepository.save(car);
+    public Boolean updateCar(Car car) {
+        boolean result = false;
+        try {
+            Car findCar = carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null);
+            if (findCar!= null) {
+                carRepository.save(car);
+                result = true;
+            }
+        }catch (RuntimeException e) {
+            log.error(e.getMessage());
         }
-        return null;
+        return result;
     }
 
     @Override

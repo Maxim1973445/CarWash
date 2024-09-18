@@ -48,11 +48,22 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public Person updateUser(Person person) {
-        if (personRepository.findByLogin(person.getLogin()).isPresent() || personRepository.findByEmail(person.getEmail()).isPresent()) {
-            return null;
+    public Boolean updateUser(Person person) {
+        Boolean result = false;
+        try {
+            Person personByEmail = personRepository.findByEmail(person.getEmail()).orElse(null);
+            if (personByEmail.getLogin().equals(person.getLogin()) || personByEmail.getEmail().equals(person.getEmail())) {
+                result = true;
+            }
+            personRepository.save(person);
+            result = true;;
+        }catch (RuntimeException ex){
+            log.error(ex.getMessage());
+            result = false;
         }
-        return personRepository.save(person);
+        finally {
+            return result;
+        }
     }
 
     @Override

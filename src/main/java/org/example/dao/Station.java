@@ -35,8 +35,4 @@ public class Station {
     private List<Order> orders;
     @OneToOne
     private Person person;
-
-
-
-
 }
