@@ -1,22 +1,22 @@
 package org.example;
 
 import org.example.dao.Car;
+import org.example.dao.Order;
 import org.example.dao.Person;
 import org.example.dao.Station;
 import org.example.enums.CarType;
+import org.example.enums.OrderStatus;
 import org.example.enums.RoleType;
 import org.example.repository.CarRepository;
 import org.example.repository.OrderRepository;
 import org.example.repository.PersonRepository;
 import org.example.repository.StationRepository;
-import org.example.service.Impl.CarServiceImpl;
-import org.example.service.Impl.StationServiceImpl;
-import org.example.service.Impl.StationServiceServiceImpl;
-import org.example.service.Impl.UserServiceImpl;
+import org.example.service.Impl.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -94,5 +94,17 @@ public class DataBaseTests {
         station.setCoordinates("56.865210, 60.640468");
         station.setFilePath("/image.png");
         stationService.createStation(station);
+    }
+    @Test
+    public void insertOrderTest(){
+        OrderServiceImpl orderService = new OrderServiceImpl(orderRepository);
+        Order order = new Order();
+        order.setPerson(userServiceImpl.getUserByEmail("vanya@gmail.com"));
+        order.setStation(stationServiceImpl.getStationById(4));
+        order.setService(stationServiceServiceImpl.getServiceById(1));
+        order.setOrderDate(LocalDateTime.now().toString());
+        order.setStartDate(LocalDateTime.now());
+        order.setOrderStatus(OrderStatus.OPEN);
+        orderService.createOrder(order);
     }
 }

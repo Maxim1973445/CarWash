@@ -23,12 +23,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Order order) {
+        if(order.getPerson()==null||order.getStation()==null||order.getService()==null){
+            throw new IllegalArgumentException("Invalid order");
+        }
         return orderRepository.save(order);
     }
 
     @Override
     public Order updateOrder(Order order) {
-        return orderRepository.save(order);
+        if(orderRepository.existsById(order.getId())) {
+            return orderRepository.save(order);
+        }
+        throw new IllegalArgumentException("Order not found");
     }
 
     @Override

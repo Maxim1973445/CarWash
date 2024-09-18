@@ -28,7 +28,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car getCarByCarNumber(String number) {
-        return carRepository.findCarByCarNumber(number);
+        return carRepository.findCarByCarNumber(number).orElse(null);
     }
 
     public List<Car> getCarsByCarType(CarType type) {
@@ -43,7 +43,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car createCar(Car car) {
-        Car findCar = carRepository.findCarByCarNumber(car.getCarNumber());
+        Car findCar = carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null);
         if(car.getPerson()==null)
             return null;
         if(findCar != null){
@@ -54,7 +54,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car updateCar(Car car) {
-        if(carRepository.findCarByCarNumber(car.getCarNumber())!=null) {
+        if(carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null)!=null) {
             return carRepository.save(car);
         }
         return null;
