@@ -4,17 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a8d5331-346a-4df2-a4eb-e4d3af6775a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="4a8d5331-346a-4df2-a4eb-e4d3af6775a4" name="Changes" comment="Возврат null при попытке создания существующего сервиса">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/StationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/StationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/StationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/DAO_variant1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;russtampv&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Maxim1973445/CarWash.git&quot;,
+    &quot;accountId&quot;: &quot;dca189fe-f223-4ba0-86f2-1632559221da&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2lZcLzdEbUtpYC2iq9AzEVIYf72" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -23,18 +65,164 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.DataBaseTests.createStationServiceTest.executor": "Run",
+    "JUnit.DataBaseTests.getPersonByOrderIdTest.executor": "Debug",
+    "JUnit.DataBaseTests.getPersonsByStationIdTest.executor": "Debug",
+    "JUnit.DataBaseTests.getPersonsTest.executor": "Run",
+    "JUnit.DataBaseTests.insertCarTest.executor": "Debug",
+    "JUnit.DataBaseTests.insertClientTest.executor": "Debug",
+    "JUnit.DataBaseTests.insertOrderTest.executor": "Debug",
+    "JUnit.DataBaseTests.insertRoleTest.executor": "Debug",
+    "JUnit.DataBaseTests.insertStationTest.executor": "Debug",
+    "JUnit.DataBaseTests.testDataBase.executor": "Debug",
+    "JUnit.DataBaseTests.updateCarTest.executor": "Debug",
+    "Maven.CarWash [clean,package].executor": "Run",
+    "Maven.CarWash [clean,validate,compile,test...].executor": "Run",
+    "Maven.CarWash [clean].executor": "Run",
+    "Maven.CarWash [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Main.executor": "Debug",
+    "git-widget-placeholder": "feature/DAO__variant2",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Work/GITREPOS/lecture6",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/sveta/Desktop/java/CarWash/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.enums" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Work\GITREPOS\CarWash\src\main\java\org\example" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example" />
+      <recent name="org.example.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DataBaseTests.insertOrderTest">
+    <configuration name="DataBaseTests.createStationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarWash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
+      <option name="METHOD_NAME" value="createStationServiceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTests.insertCarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarWash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
+      <option name="METHOD_NAME" value="insertCarTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTests.insertOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarWash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
+      <option name="METHOD_NAME" value="insertOrderTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTests.insertStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarWash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
+      <option name="METHOD_NAME" value="insertStationTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTests.updateCarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CarWash" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
+      <option name="METHOD_NAME" value="updateCarTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="CarWash" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DataBaseTests.insertOrderTest" />
+        <item itemvalue="JUnit.DataBaseTests.createStationServiceTest" />
+        <item itemvalue="JUnit.DataBaseTests.insertCarTest" />
+        <item itemvalue="JUnit.DataBaseTests.insertStationTest" />
+        <item itemvalue="JUnit.DataBaseTests.updateCarTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
       </set>
     </attachedChunks>
   </component>
@@ -47,19 +235,241 @@
       <option name="presentableId" value="Default" />
       <updated>1725390988610</updated>
       <workItem from="1725390989779" duration="4000" />
+      <workItem from="1725433549974" duration="4957000" />
+      <workItem from="1725449723123" duration="1019000" />
+      <workItem from="1725506818507" duration="7852000" />
+      <workItem from="1725647345213" duration="5843000" />
+      <workItem from="1725900514097" duration="10492000" />
+      <workItem from="1725911026298" duration="308000" />
+      <workItem from="1725968136623" duration="241000" />
+      <workItem from="1725968387723" duration="811000" />
+      <workItem from="1725987478721" duration="2060000" />
+      <workItem from="1726034139867" duration="8054000" />
+      <workItem from="1726045674371" duration="4560000" />
+      <workItem from="1726117175592" duration="21119000" />
+      <workItem from="1726161955897" duration="2472000" />
+      <workItem from="1726459732239" duration="5603000" />
+      <workItem from="1726465374779" duration="11765000" />
+      <workItem from="1726572395107" duration="3191000" />
+      <workItem from="1726632490428" duration="14327000" />
+      <workItem from="1726728371561" duration="19642000" />
+      <workItem from="1726750164652" duration="637000" />
     </task>
+    <task id="LOCAL-00001" summary="Разработка части взаимодействия с БД">
+      <option name="closed" value="true" />
+      <created>1725991951291</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725991951291</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Контрольная точка">
+      <option name="closed" value="true" />
+      <created>1726143386109</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726143386109</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Убрал Owner и Client">
+      <option name="closed" value="true" />
+      <created>1726463116997</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726463116997</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Убрал сущность Role.java">
+      <option name="closed" value="true" />
+      <created>1726483783390</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726483783390</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Добавил кодирование для паролей. Добавил таблицу Logs">
+      <option name="closed" value="true" />
+      <created>1726489467870</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726489467870</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Добавил кодирование для паролей. Добавил таблицу Logs">
+      <option name="closed" value="true" />
+      <created>1726489856009</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726489856009</updated>
+    </task>
+    <task id="LOCAL-00007" summary="правка Station.java">
+      <option name="closed" value="true" />
+      <created>1726576448883</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726576448883</updated>
+    </task>
+    <task id="LOCAL-00008" summary="правка аннотаций по сущности Order">
+      <option name="closed" value="true" />
+      <created>1726634551253</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1726634551253</updated>
+    </task>
+    <task id="LOCAL-00009" summary="правка в логике обработки запросов в сервис">
+      <option name="closed" value="true" />
+      <created>1726643403513</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1726643403513</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Возврат null при попытке создания существующего сервиса">
+      <option name="closed" value="true" />
+      <created>1726652481213</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1726652481213</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Разработка части взаимодействия с БД" />
+    <MESSAGE value="Контрольная точка" />
+    <MESSAGE value="Убрал Owner и Client" />
+    <MESSAGE value="Убрал сущность Role.java" />
+    <MESSAGE value="Добавил кодирование для паролей. Добавил таблицу Logs" />
+    <MESSAGE value="правка Station.java" />
+    <MESSAGE value="правка аннотаций по сущности Order" />
+    <MESSAGE value="правка в логике обработки запросов в сервис" />
+    <MESSAGE value="Возврат null при попытке создания существующего сервиса" />
+    <option name="LAST_COMMIT_MESSAGE" value="Возврат null при попытке создания существующего сервиса" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
+          <line>43</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
+          <line>25</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
+          <line>32</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
+          <line>37</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/UserServiceImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/SlotServiceImpl.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/SlotServiceImpl.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java</url>
+          <line>15</line>
+          <properties class="org.example.service.OrderService" method="getOrdersForStationToDay">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
