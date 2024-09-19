@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.dao.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface OrderService {
@@ -12,4 +13,7 @@ public interface OrderService {
     Order getOrderById(long orderId);
     Person getPersonByOrderId(long orderId);
     Station getStationByOrderId(long orderId);
+    List<Order> getOrdersForStationToDay(Long stationId, LocalDate date);
+
+    Order getOrderByDate(String dateTime);
 }

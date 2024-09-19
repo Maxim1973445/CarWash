@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+
 @Service
 @Transactional
 public class StationServiceServiceImpl implements StationServiceService {
 
 
     private final StationServiceRepository stationServiceRepository;
+
     @Autowired
     public StationServiceServiceImpl(StationServiceRepository stationServiceRepository) {
         this.stationServiceRepository = stationServiceRepository;
@@ -37,9 +39,6 @@ public class StationServiceServiceImpl implements StationServiceService {
 
     @Override
     public StationService createStationService(StationService stationService) {
-        if (stationServiceRepository.existsById(stationService.getId())) {
-            return null;
-        }
         return stationServiceRepository.save(stationService);
     }
 

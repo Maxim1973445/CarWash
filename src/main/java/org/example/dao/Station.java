@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -17,8 +19,10 @@ public class Station {
     private Long id;
     @Column(name="station_name")
     private String stationName;
-    @Column(name="life_cycle")
-    private String lifeCycle;
+    @Column(name="open_time")
+    private LocalTime openTime;
+    @Column(name="close_time")
+    private LocalTime closeTime;
     @Column(name="address")
     private String address;
     @Column(name="first_phone")
@@ -33,6 +37,6 @@ public class Station {
     private String filePath;
     @OneToMany(mappedBy = "station")
     private List<Order> orders;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Person person;
 }

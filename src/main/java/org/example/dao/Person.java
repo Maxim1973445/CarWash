@@ -43,8 +43,6 @@ public class Person implements UserDetails {
     @Enumerated(EnumType.STRING)
     private RoleType role;
 
-    @OneToMany(mappedBy = "person")
-    private Set<Order> orders;
 
     @OneToMany(mappedBy = "person")
     private List<Car> cars;

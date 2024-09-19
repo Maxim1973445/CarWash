@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 @Service
 @Transactional
@@ -23,10 +24,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Order order) {
-        if(order.getPerson()==null||order.getStation()==null||order.getService()==null){
-            throw new IllegalArgumentException("Invalid order");
+        if(order.getCar()==null||order.getStation()==null||order.getService()==null){
+            throw new IllegalArgumentException("required parameters missing");
         }
-        return orderRepository.save(order);
+        try {
+            return orderRepository.save(order);
+        }catch(RuntimeException ex){
+            throw ex;
+        }
     }
 
     @Override
@@ -58,7 +63,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Person getPersonByOrderId(long orderId) {
         if(orderRepository.existsById(orderId)) {
-            return orderRepository.findById(orderId).get().getPerson();
+            return orderRepository.findById(orderId).get().getCar().getPerson();
         }
         return null;
     }
@@ -68,6 +73,15 @@ public class OrderServiceImpl implements OrderService {
         if(orderRepository.existsById(orderId)) {
             return orderRepository.findById(orderId).get().getStation();
         }
+        return null;
+    }
+    @Override
+    public List<Order> getOrdersForStationToDay(Long stationId, LocalDate date) {
+            return orderRepository.findOrdersByStationToDay(stationId,date);
+    }
+
+    @Override
+    public Order getOrderByDate(String dateTime) {
         return null;
     }
 }
