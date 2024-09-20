@@ -36,7 +36,7 @@ public class StationServiceImpl implements StationService {
     @Override
     public Station createStation(Station station) {
         if (station.getPerson() == null)
-            throw new IllegalArgumentException("Peron is null");
+            throw new IllegalArgumentException("Person is null");
         if (station.getPerson().getId() == null) {
             Person pers = userService.createUser(station.getPerson());
             station.setPerson(pers);
