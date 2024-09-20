@@ -4,21 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a8d5331-346a-4df2-a4eb-e4d3af6775a4" name="Changes" comment="Возврат null при попытке создания существующего сервиса">
+    <list default="true" id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="Запись на мойку">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/OwnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/security/CustomUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Slot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/StationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/StationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/LogServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/SlotServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/SlotServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/StationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/authorization.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/authorization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/clientaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/clientaccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registrationowner.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registrationowner.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +40,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -51,8 +63,15 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Maxim1973445/CarWash.git&quot;,
-    &quot;accountId&quot;: &quot;dca189fe-f223-4ba0-86f2-1632559221da&quot;
+    &quot;accountId&quot;: &quot;30c70a99-1926-4e51-9d70-0d1d65fdfbb2&quot;
   }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/example/Car.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -65,17 +84,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.DataBaseTests.createStationServiceTest.executor": "Run",
-    "JUnit.DataBaseTests.getPersonByOrderIdTest.executor": "Debug",
     "JUnit.DataBaseTests.getPersonsByStationIdTest.executor": "Debug",
-    "JUnit.DataBaseTests.getPersonsTest.executor": "Run",
+    "JUnit.DataBaseTests.getPersonsTest.executor": "Debug",
     "JUnit.DataBaseTests.insertCarTest.executor": "Debug",
     "JUnit.DataBaseTests.insertClientTest.executor": "Debug",
-    "JUnit.DataBaseTests.insertOrderTest.executor": "Debug",
     "JUnit.DataBaseTests.insertRoleTest.executor": "Debug",
-    "JUnit.DataBaseTests.insertStationTest.executor": "Debug",
     "JUnit.DataBaseTests.testDataBase.executor": "Debug",
-    "JUnit.DataBaseTests.updateCarTest.executor": "Debug",
     "Maven.CarWash [clean,package].executor": "Run",
     "Maven.CarWash [clean,validate,compile,test...].executor": "Run",
     "Maven.CarWash [clean].executor": "Run",
@@ -85,11 +99,12 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Car.executor": "Run",
     "Spring Boot.Main.executor": "Debug",
-    "git-widget-placeholder": "feature/DAO__variant2",
+    "git-widget-placeholder": "IOMaksimenko",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Work/GITREPOS/lecture6",
+    "last_opened_file_path": "/Users/mac/IdeaProjects/CarWash/src/main/resources/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -109,233 +124,87 @@
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.example.enums" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Work\GITREPOS\CarWash\src\main\java\org\example" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+      <recent name="C:\Users\sveta\Desktop\java\CarWash2\src\main\resources" />
+      <recent name="C:\Users\sveta\Desktop\java\CarWash2\src\main\resources\templates" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.example" />
-      <recent name="org.example.service" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Администратор\IdeaProjects5\CarWash\src\main\resources\static" />
+      <recent name="C:\Users\Администратор\IdeaProjects5\CarWash\src\main\resources" />
+      <recent name="C:\Users\Администратор\IdeaProjects5\CarWash\src\main\resources\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBaseTests.insertOrderTest">
-    <configuration name="DataBaseTests.createStationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CarWash" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
-      <option name="METHOD_NAME" value="createStationServiceTest" />
-      <option name="TEST_OBJECT" value="method" />
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataBaseTests.insertCarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CarWash" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
-      <option name="METHOD_NAME" value="insertCarTest" />
-      <option name="TEST_OBJECT" value="method" />
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataBaseTests.insertOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Car" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="CarWash" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
-      <option name="METHOD_NAME" value="insertOrderTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Car" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataBaseTests.insertStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CarWash" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
-      <option name="METHOD_NAME" value="insertStationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataBaseTests.updateCarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CarWash" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.DataBaseTests" />
-      <option name="METHOD_NAME" value="updateCarTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="CarWash" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.DataBaseTests.insertOrderTest" />
-        <item itemvalue="JUnit.DataBaseTests.createStationServiceTest" />
-        <item itemvalue="JUnit.DataBaseTests.insertCarTest" />
-        <item itemvalue="JUnit.DataBaseTests.insertStationTest" />
-        <item itemvalue="JUnit.DataBaseTests.updateCarTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4a8d5331-346a-4df2-a4eb-e4d3af6775a4" name="Changes" comment="" />
-      <created>1725390988610</created>
+      <changelist id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="" />
+      <created>1725565152396</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1725390988610</updated>
-      <workItem from="1725390989779" duration="4000" />
-      <workItem from="1725433549974" duration="4957000" />
-      <workItem from="1725449723123" duration="1019000" />
-      <workItem from="1725506818507" duration="7852000" />
-      <workItem from="1725647345213" duration="5843000" />
-      <workItem from="1725900514097" duration="10492000" />
-      <workItem from="1725911026298" duration="308000" />
-      <workItem from="1725968136623" duration="241000" />
-      <workItem from="1725968387723" duration="811000" />
-      <workItem from="1725987478721" duration="2060000" />
-      <workItem from="1726034139867" duration="8054000" />
-      <workItem from="1726045674371" duration="4560000" />
-      <workItem from="1726117175592" duration="21119000" />
-      <workItem from="1726161955897" duration="2472000" />
-      <workItem from="1726459732239" duration="5603000" />
-      <workItem from="1726465374779" duration="11765000" />
-      <workItem from="1726572395107" duration="3191000" />
-      <workItem from="1726632490428" duration="14327000" />
-      <workItem from="1726728371561" duration="19642000" />
-      <workItem from="1726750164652" duration="637000" />
+      <updated>1725565152396</updated>
+      <workItem from="1725565153608" duration="1364000" />
+      <workItem from="1725599937136" duration="2462000" />
+      <workItem from="1725602501994" duration="1303000" />
+      <workItem from="1725608706007" duration="676000" />
+      <workItem from="1725619095700" duration="1959000" />
+      <workItem from="1725621629749" duration="496000" />
+      <workItem from="1725734103432" duration="2500000" />
+      <workItem from="1725811999606" duration="7866000" />
+      <workItem from="1725960276320" duration="1432000" />
+      <workItem from="1725989348688" duration="4680000" />
+      <workItem from="1726202357591" duration="3862000" />
+      <workItem from="1726390969476" duration="1220000" />
+      <workItem from="1726395073692" duration="298000" />
+      <workItem from="1726395657609" duration="8651000" />
+      <workItem from="1726753835059" duration="26153000" />
     </task>
-    <task id="LOCAL-00001" summary="Разработка части взаимодействия с БД">
+    <task id="LOCAL-00001" summary="Ещё">
       <option name="closed" value="true" />
-      <created>1725991951291</created>
+      <created>1726322945960</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1725991951291</updated>
+      <updated>1726322945960</updated>
     </task>
-    <task id="LOCAL-00002" summary="Контрольная точка">
+    <task id="LOCAL-00002" summary="Собрал проект">
       <option name="closed" value="true" />
-      <created>1726143386109</created>
+      <created>1726410051765</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1726143386109</updated>
+      <updated>1726410051765</updated>
     </task>
-    <task id="LOCAL-00003" summary="Убрал Owner и Client">
-      <option name="closed" value="true" />
-      <created>1726463116997</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1726463116997</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Убрал сущность Role.java">
-      <option name="closed" value="true" />
-      <created>1726483783390</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1726483783390</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Добавил кодирование для паролей. Добавил таблицу Logs">
-      <option name="closed" value="true" />
-      <created>1726489467870</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726489467870</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Добавил кодирование для паролей. Добавил таблицу Logs">
-      <option name="closed" value="true" />
-      <created>1726489856009</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726489856009</updated>
-    </task>
-    <task id="LOCAL-00007" summary="правка Station.java">
-      <option name="closed" value="true" />
-      <created>1726576448883</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726576448883</updated>
-    </task>
-    <task id="LOCAL-00008" summary="правка аннотаций по сущности Order">
-      <option name="closed" value="true" />
-      <created>1726634551253</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726634551253</updated>
-    </task>
-    <task id="LOCAL-00009" summary="правка в логике обработки запросов в сервис">
-      <option name="closed" value="true" />
-      <created>1726643403513</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726643403513</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Возврат null при попытке создания существующего сервиса">
-      <option name="closed" value="true" />
-      <created>1726652481213</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726652481213</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,125 +222,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Разработка части взаимодействия с БД" />
-    <MESSAGE value="Контрольная точка" />
-    <MESSAGE value="Убрал Owner и Client" />
-    <MESSAGE value="Убрал сущность Role.java" />
-    <MESSAGE value="Добавил кодирование для паролей. Добавил таблицу Logs" />
-    <MESSAGE value="правка Station.java" />
-    <MESSAGE value="правка аннотаций по сущности Order" />
-    <MESSAGE value="правка в логике обработки запросов в сервис" />
-    <MESSAGE value="Возврат null при попытке создания существующего сервиса" />
-    <option name="LAST_COMMIT_MESSAGE" value="Возврат null при попытке создания существующего сервиса" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
-          <line>43</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
-          <line>25</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
-          <line>32</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar!/org/springframework/beans/factory/BeanCreationException.class</url>
-          <line>37</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/UserServiceImpl.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>125</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/SlotServiceImpl.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/test/org/example/DataBaseTests.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/SlotServiceImpl.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java</url>
-          <line>15</line>
-          <properties class="org.example.service.OrderService" method="getOrdersForStationToDay">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Новое" />
+    <MESSAGE value="новое" />
+    <MESSAGE value="Ещё" />
+    <MESSAGE value="Собрал проект" />
+    <MESSAGE value="Добавили запись на мойку" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавили запись на мойку" />
   </component>
 </project>

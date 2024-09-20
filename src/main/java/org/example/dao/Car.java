@@ -3,7 +3,7 @@ package org.example.dao;
 import lombok.*;
 import org.example.enums.CarType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity

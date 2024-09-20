@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.enums.LogStatus;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 

@@ -10,12 +10,12 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserDetailsService, UserService {
+public class UserServiceImpl implements  UserService {
 
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
     private final PersonRepository personRepository;
@@ -24,10 +24,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     private PasswordEncoder passwordEncoder;
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return personRepository.findPersonEntityByLogin(username).orElseThrow(()->new UsernameNotFoundException(username));
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        return personRepository.findPersonEntityByLogin(username).orElseThrow(()->new UsernameNotFoundException(username));
+//    }
 
     @Autowired
     public UserServiceImpl(PersonRepository personRepository) {
@@ -37,13 +37,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public Person createUser(Person person) {
-        Person personByEmail = personRepository.findByEmail(person.getEmail()).orElse(null);
+        Person personByEmail = personRepository.findByLogin(person.getLogin()).orElse(null);
         if (personByEmail==null) {
             String encriptPass = passwordEncoder.encode(person.getPassword());
             person.setPassword(encriptPass);
             return personRepository.save(person);
         }
-        log.error("Пользователь с таким email уже существует");
+        log.error("Пользователь с таким login уже существует");
         return personByEmail;
     }
 
