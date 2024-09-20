@@ -10,7 +10,6 @@ public interface StationService {
     List<Station> getStations();
     void deleteStation(long id);
     void updateStation(Station station);
-    Person getOwnerByStationId(long id);
     List<Order> getOrdersByStationId(long id);
     List<Person> getClientsByStationId(long id);
 }

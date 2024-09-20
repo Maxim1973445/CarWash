@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface OrderService {
     Order createOrder(Order order);
-    Order updateOrder(Order order);
+    Boolean updateOrder(Order order) throws Exception;
     void deleteOrder(long orderId);
     List<Order> getAllOrders();
     Order getOrderById(long orderId);

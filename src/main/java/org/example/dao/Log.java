@@ -8,7 +8,7 @@ import java.util.Date;
 @Table(name="logs")
 public class Log {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private Date eventTime;
     private String operationName;

@@ -31,9 +31,14 @@ public class StationServiceServiceImpl implements StationServiceService {
     }
 
     @Override
+    public StationService getServiceById(long id) {
+        return stationServiceRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public StationService createStationService(StationService stationService) {
         if (stationServiceRepository.existsById(stationService.getId())) {
-            return stationServiceRepository.findById(stationService.getId()).get();
+            return null;
         }
         return stationServiceRepository.save(stationService);
     }

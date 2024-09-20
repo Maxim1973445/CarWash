@@ -12,7 +12,7 @@ public interface CarService {
     List<Car> getCarsByCarType(CarType carType);
     List<Car> getAllCars();
     Car createCar(Car Car);
-    Car updateCar(Car Car);
+    Boolean updateCar(Car Car);
     void deleteCar(long id);
 
 

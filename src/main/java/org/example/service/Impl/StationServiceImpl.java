@@ -1,7 +1,6 @@
 package org.example.service.Impl;
 
 
-
 import org.example.dao.Order;
 import org.example.dao.Person;
 import org.example.dao.Station;
@@ -29,6 +28,8 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public Station createStation(Station station) {
+        if(station.getPerson()==null)
+            return null;
         return stationRepository.save(station);
     }
 
@@ -51,11 +52,6 @@ public class StationServiceImpl implements StationService {
     public void updateStation(Station station) {
         stationRepository.save(station);
 
-    }
-
-    @Override
-    public Person getOwnerByStationId(long id) {
-        return stationRepository.findById(id).get().getOwner();
     }
 
     @Override

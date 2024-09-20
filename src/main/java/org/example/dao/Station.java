@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 public class Station {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name="station_name")
     private String stationName;
@@ -30,12 +31,8 @@ public class Station {
     private String coordinates;
     @Column(name="file_path")
     private String filePath;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Person owner;
     @OneToMany(mappedBy = "station")
     private List<Order> orders;
-
-
-
-
+    @OneToOne
+    private Person person;
 }
