@@ -17,12 +17,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
-    private String orderDate;
+    private LocalDateTime orderDate;
     @ManyToOne(cascade = CascadeType.MERGE)
-    private Person person;
+    private Car car;
     @ManyToOne(cascade = CascadeType.MERGE)
     private StationService service;
     @ManyToOne(cascade = CascadeType.MERGE)

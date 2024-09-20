@@ -4,6 +4,7 @@ import lombok.*;
 import org.example.enums.CarType;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="cars")
@@ -23,6 +24,8 @@ public class Car {
     @Column(name="car_type")
     @Enumerated(EnumType.STRING)
     private CarType carType;
+    @OneToMany(mappedBy = "car")
+    private Set<Order> orders;
 
     @ManyToOne
     private Person person;
