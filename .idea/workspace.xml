@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="Настроил Spring Security, готовы контроллеры для авторизации, регистрации, ЛК и главной страницы">
+    <list default="true" id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="поправил ЛК владельца">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/OwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/OwnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/CarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/LogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/StationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/authorization.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/authorization.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registrationowner.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/registrationowner.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +176,9 @@
       <workItem from="1726395073692" duration="298000" />
       <workItem from="1726395657609" duration="8651000" />
       <workItem from="1726753835059" duration="26715000" />
-      <workItem from="1726840309542" duration="8661000" />
+      <workItem from="1726840309542" duration="9289000" />
+      <workItem from="1726860918786" duration="1230000" />
+      <workItem from="1726992572411" duration="11755000" />
     </task>
     <task id="LOCAL-00001" summary="Ещё">
       <option name="closed" value="true" />
@@ -195,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726839945141</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="поправил ЛК владельца">
+      <option name="closed" value="true" />
+      <created>1726851468666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726851468666</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +236,7 @@
     <MESSAGE value="Собрал проект" />
     <MESSAGE value="Добавили запись на мойку" />
     <MESSAGE value="Настроил Spring Security, готовы контроллеры для авторизации, регистрации, ЛК и главной страницы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Настроил Spring Security, готовы контроллеры для авторизации, регистрации, ЛК и главной страницы" />
+    <MESSAGE value="поправил ЛК владельца" />
+    <option name="LAST_COMMIT_MESSAGE" value="поправил ЛК владельца" />
   </component>
 </project>

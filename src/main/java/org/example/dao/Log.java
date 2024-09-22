@@ -1,7 +1,9 @@
 package org.example.dao;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.enums.LogStatus;
 
@@ -13,9 +15,10 @@ import java.util.Date;
 @Table(name="logs")
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Log {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private LocalDateTime eventTime;
     @Enumerated(EnumType.STRING)

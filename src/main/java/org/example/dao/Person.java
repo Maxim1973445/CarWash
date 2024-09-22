@@ -53,38 +53,6 @@ public class Person {
     @OneToMany(mappedBy = "person")
     private List<Car> cars;
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        List<GrantedAuthority> authorities = new ArrayList<>();
-//        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.toString()));
-//        return authorities;
-//    }
-
-//    @Override
-//    public String getUsername() {
-//        return this.login;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
-
     @Override
     public String toString() {
         return login+" "+phone+" "+email;

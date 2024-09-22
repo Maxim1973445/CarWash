@@ -15,11 +15,20 @@ import java.time.LocalDateTime;
 public class LogServiceImpl implements LogService {
     @Override
     public Boolean writeLog(String log, LogStatus status, String operationName) {
-        Log logItem = new Log();
-        logItem.setStatus(status);
-        logItem.setOperationName(operationName);
-        logItem.setEventTime(LocalDateTime.now());
-        logItem.setMessage(log);
+        long count = logRepository.count();
+        Log logItem = new Log(
+                ++count,
+                LocalDateTime.now(),
+                status,
+                operationName,
+                log
+        );
+
+//        logItem.setStatus(status);
+//        logItem.setOperationName(operationName);
+//        logItem.setEventTime(LocalDateTime.now());
+//        logItem.setMessage(log);
+
         logRepository.save(logItem);
         return true;
     }
