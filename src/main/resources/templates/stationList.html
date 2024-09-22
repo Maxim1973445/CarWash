@@ -41,28 +41,26 @@
     <div th:each="order:${station.orders}">
         <div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                <div th:each="station : ${stations}" class="list-group-item">
+                    <h5 class="mb-1" th:text="${station.stationName}"></h5>
+                    <p class="mb-1" th:text="${station.address}"></p>
+                    <form action="/owneraccount/changeStatus" method="post" class="d-inline">
+                        <input type="hidden" name="stationId" th:value="${station.id}">
+                        <select name="status" class="form-select d-inline w-auto" required>
+                            <option value="OPEN" th:selected="${station.status == 'OPEN'}">Открыта</option>
+                            <option value="CLOSED" th:selected="${station.status == 'CLOSED'}">Закрыта</option>
+                            <option value="IN_MAINTENANCE" th:selected="${station.status == 'IN_MAINTENANCE'}">На ремонте</option>
+                            <option value="CLOSED_TEMPORARILY" th:selected="${station.status == 'CLOSED_TEMPORARILY'}">Временно закрыта</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm ms-2">Обновить статус</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-<!--    <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!--            <div class="list-group">-->
-<!--                <div th:each="station : ${stations}" class="list-group-item">-->
-<!--                    <h5 class="mb-1" th:text="${station.stationName}"></h5>-->
-<!--                    <p class="mb-1" th:text="${station.address}"></p>-->
-<!--                    <form action="/owneraccount/changeStatus" method="post" class="d-inline">-->
-<!--                        <input type="hidden" name="stationId" th:value="${station.id}">-->
-<!--                        <select name="status" class="form-select d-inline w-auto" required>-->
-<!--                            <option value="OPEN" th:selected="${station.status == 'OPEN'}">Открыта</option>-->
-<!--                            <option value="CLOSED" th:selected="${station.status == 'CLOSED'}">Закрыта</option>-->
-<!--                            <option value="IN_MAINTENANCE" th:selected="${station.status == 'IN_MAINTENANCE'}">На ремонте</option>-->
-<!--                            <option value="CLOSED_TEMPORARILY" th:selected="${station.status == 'CLOSED_TEMPORARILY'}">Временно закрыта</option>-->
-<!--                        </select>-->
-<!--                        <button type="submit" class="btn btn-primary btn-sm ms-2">Обновить статус</button>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
