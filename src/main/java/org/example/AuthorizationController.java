@@ -7,8 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthorizationController {
 
-    // Метод для отображения страницы авторизации
+    // Метод для отображения главной страницы
     @GetMapping("/")
+    public String mainPage(Model model) {
+        return "main"; // Возвращает шаблон авторизации
+    }
+
+
+    // Метод для отображения страницы авторизации
+    @GetMapping("/authorization")
     public String authorization(Model model) {
         return "authorization"; // Возвращает шаблон авторизации
     }
