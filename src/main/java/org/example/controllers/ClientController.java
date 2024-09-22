@@ -40,6 +40,7 @@ public class ClientController {
                 null,
                 null,
                 RoleType.CLIENT,
+                null,
                 null
         );
         userService.createUser(owner);

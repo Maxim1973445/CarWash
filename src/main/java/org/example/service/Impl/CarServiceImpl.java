@@ -46,13 +46,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car createCar(Car car) {
         try {
-            if (car.getCarNumber() == null || car.getCarType() == null)
-                throw new IllegalArgumentException("Car number and type are required");
+            if (car.getCarNumber() == null || car.getCarType() == null||car.getPerson() == null)
+                throw new IllegalArgumentException("Car number, type and person are required");
             Car findCar = carRepository.findCarByCarNumber(car.getCarNumber()).orElse(null);
-            if (car.getPerson() == null)
-                return null;
             if (findCar != null) {
-                return findCar;
+                return null;
             }
             return carRepository.save(car);
         }catch (RuntimeException e) {
