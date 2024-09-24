@@ -7,12 +7,11 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name="stations")
+@Table(name= "stations")
 @Getter
 @Setter
 @AllArgsConstructor

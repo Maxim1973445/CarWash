@@ -23,7 +23,7 @@ public class WebSecurityConfig {
                                         "/registration", "/authcheck", "/addclient", "/addowner",
                                         "/auth").permitAll()
                                 .requestMatchers("/owneraccount/**", "/order/**", "/stationlist").hasRole("OWNER")
-                                .requestMatchers("/clientaccount/**").hasRole("CLIENT")
+                                .requestMatchers("/clientaccount/**", "/addCar").hasRole("CLIENT")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(

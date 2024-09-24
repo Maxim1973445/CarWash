@@ -90,4 +90,8 @@ public class StationServiceImpl implements StationService {
         List<Car> cars = orders.stream().map(Order::getCar).toList();
         return cars.stream().map(Car::getPerson).toList();
     }
+
+    public Long count(){
+        return stationRepository.count();
+    }
 }

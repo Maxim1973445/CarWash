@@ -68,7 +68,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center">
-                <img src="/static/CarWashLogo.jpg" width="100%" height="60"/>
+                <img src="/static/CarWashLogo.jpg" width="60" height="60"/>
                 <strong>&nbsp CarWash</strong>
             </a>
             <a href="/logout" class="btn btn-outline-light ms-auto">Выйти</a>
@@ -192,7 +192,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="editPhone" class="form-label">Телефон</label>
-                        <input type="text" class="form-control" id="editPhone" name="phone" th:value="${client.phone}">
+                        <input type="tel" class="form-control" id="editPhone" name="phone" th:value="${client.phone}">
                     </div>
                     <div class="mb-3">
                         <label for="editBirthday" class="form-label">Дата рождения</label>

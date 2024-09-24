@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.enums.RoleType;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
 
@@ -18,7 +15,7 @@ import java.util.*;
 @Getter
 @Setter
 @Entity
-@Table(name="persons")
+@Table(name= "persons")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {

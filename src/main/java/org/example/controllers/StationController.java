@@ -15,7 +15,6 @@ public class StationController {
 
     @GetMapping(value = "/stationlist")
     public String getStationList(Model model, HttpServletRequest request) {
-
         model.addAttribute("station", stationService.getStationById(Integer.parseInt(request.getParameter("id"))));
         return "stationList";
     }

@@ -41,8 +41,9 @@ public class OwnerController {
     @PostMapping(value = "/addowner")
     public String add(Model model, HttpServletRequest request) {
         LocalDate date = LocalDate.parse(request.getParameter("birthdate"));
+        Long count = userService.count();
         Person owner = new Person(
-                (long) (Math.random() * 1000),
+                ++count,
                 request.getParameter("login"),
                 request.getParameter("password"),
                 request.getParameter("firstname"),
@@ -87,8 +88,9 @@ public class OwnerController {
     @PostMapping(value = "/owneraccount/addstation")
     public String addStation(HttpServletRequest request) {
         Person owner = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long count = stationService.count();
         Station station = new Station(
-                (long) (Math.random() * 1000),
+                ++count,
                 request.getParameter("carWashName"),
                 null,
                 null,

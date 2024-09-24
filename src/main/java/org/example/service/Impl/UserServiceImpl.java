@@ -119,4 +119,8 @@ public class UserServiceImpl implements UserService {
     public List<Person> getAllUsers() {
         return personRepository.findAll();
     }
+
+    public Long count(){
+        return personRepository.count();
+    }
 }
