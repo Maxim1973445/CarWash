@@ -39,16 +39,6 @@
         .dashboard-actions {
             margin-top: 20px;
         }
-
-        .dashboard-actions .card {
-            height: 100%;
-        }
-
-        .dashboard-actions .card-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
     </style>
 </head>
 
@@ -57,7 +47,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center">
-                <img src="/static/CarWashLogo.jpg" width="100%" height="60"/>
+                <img src="/static/CarWashLogo.jpg" width="60" height="60"/>
                 <strong>&nbsp CarWash</strong>
             </a>
             <a href="/logout" class="btn btn-outline-light ms-auto">Выйти</a>
@@ -79,13 +69,16 @@
         </div>
         <div class="card-body">
             <div>
-                <h5 class="card-title">Джон Доу</h5>
-                <p class="card-text">Эл. почта: john.doe@example.com</p>
-                <p class="card-text">Телефон: +1 555-555-5555</p>
-                <p class="card-text">Дата рождения: 1985-06-15</p>
+                <h5 class="card-title" th:text="${owner.firstName} + ' ' + ${owner.lastName}"></h5>
+                <p class="card-text">Эл. почта: <span th:text="${owner.email}"></span></p>
+                <p class="card-text">Телефон: <span th:text="${owner.phone}"></span></p>
+                <p class="card-text">Дата рождения: <span th:text="${owner.dateOfBirth}"></span></p>
             </div>
-            <!-- Кнопка открытия модального окна для редактирования профиля -->
+            <!-- Кнопки -->
             <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Редактировать профиль</a>
+            <a href="#" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addStationModal">Добавить мойку</a>
+            <!-- Кнопка статистики -->
+            <a href="#" class="btn btn-primary ms-2">Посмотреть статистику</a>
         </div>
     </div>
 
@@ -94,51 +87,36 @@
         <div class="card-header">
             Информация об автомойке
         </div>
-        <div class="card-body">
-            <div>
-                <h5 class="card-title">Sunshine Car Wash</h5>
-                <p class="card-text">Адрес: 1234 Elm Street, Springfield</p>
-                <p class="card-text">Статус: Активна</p>
-                <p class="card-text">Количество сотрудников: 15</p>
+        <div class="table" th:each="station : ${stations}">
+            <div class="card-body">
+                <div>
+                    <h5 class="card-title" th:text="${station.stationName}"></h5>
+
+                    <p class="card-text">Время открытия: <span th:text="${#dates.format(station.openTime, 'HH:mm')}"></span></p>
+                    <p class="card-text">Время закрытия: <span th:text="${#dates.format(station.closeTime, 'HH:mm')}"></span></p>
+                </div>
+                <div>
+                    <h5 class="card-title" th:text="${station.stationName}"></h5>
+                    <p class="card-text" th:text="${station.address}"></p>
+                    <!-- Показать текущий статус -->
+                </div>
+                <div style="display: inline">
+                    <form action="/stationlist" method="get">
+                        <input type="submit" value="Подробнее">
+                        <input type="hidden" th:value="${station.id}" name="id">
+                    </form>
+                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editCarWashModal"
+                       onclick="setStationId(${station.id})">Редактировать данные об автомойке</a>
+                    <!-- Ссылка для перехода на страницу station.list -->
+                    <a href="/station/list?stationId=${station.id}" class="btn btn-secondary">Информация о заказах</a>
+                </div>
             </div>
-            <!-- Кнопка открытия модального окна для редактирования автомойки -->
-            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editCarWashModal">Редактировать данные об автомойке</a>
         </div>
     </div>
 
-    <!-- Действия -->
-    <div class="dashboard-actions">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Посмотреть статистику</h5>
-                        <p class="card-text">Посмотреть статистику работы и доходов.</p>
-                        <a href="#" class="btn btn-primary">Статистика</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Управление сотрудниками</h5>
-                        <p class="card-text">Управление персоналом автомойки.</p>
-                        <a href="#" class="btn btn-primary">Сотрудники</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Настройки</h5>
-                        <p class="card-text">Настройка параметров аккаунта.</p>
-                        <a href="#" class="btn btn-primary">Настройки</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </main>
+
+<!-- Модальные окна -->
 
 <!-- Модальное окно для редактирования профиля -->
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -149,18 +127,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/owneraccount/update">
+                <form action="/owneraccount/update" method="post">
                     <div class="mb-3">
                         <label for="editEmail" class="form-label">Эл. почта</label>
-                        <input type="email" class="form-control" id="editEmail" name="email" value="john.doe@example.com">
+                        <input type="email" class="form-control" id="editEmail" name="email" th:value="${owner.email}">
                     </div>
                     <div class="mb-3">
                         <label for="editPhone" class="form-label">Телефон</label>
-                        <input type="text" class="form-control" id="editPhone" name="phone" value="+1 555-555-5555">
+                        <input type="tel" class="form-control" id="editPhone" name="phone" th:value="${owner.phone}">
                     </div>
                     <div class="mb-3">
                         <label for="editBirthday" class="form-label">Дата рождения</label>
-                        <input type="date" class="form-control" id="editBirthday" name="birthday" value="1985-06-15">
+                        <input type="date" class="form-control" id="editBirthday" name="birthday"
+                               th:value="${owner.dateOfBirth}">
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                 </form>
@@ -169,32 +148,86 @@
     </div>
 </div>
 
+<!-- Модальное окно для добавления мойки -->
+<div class="modal fade" id="addStationModal" tabindex="-1" aria-labelledby="addStationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addStationModalLabel">Добавить автомойку</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/owneraccount/addstation" method="post">
+                    <div class="mb-3">
+                        <label for="carWashName" class="form-label">Название автомойки</label>
+                        <input type="text" class="form-control" id="carWashName" name="carWashName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carWashAddress" class="form-label">Адрес автомойки</label>
+                        <input type="text" class="form-control" id="carWashAddress" name="carWashAddress" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carWashPhone" class="form-label">Телефон</label>
+                        <input type="text" class="form-control" id="carWashPhone" name="carWashPhone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carWashEmail" class="form-label">Эл. почта автомойки</label>
+                        <input type="email" class="form-control" id="carWashEmail" name="carWashEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="openTime" class="form-label">Время открытия</label>
+                        <input type="time" class="form-control" id="openTime" name="openTime" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="closeTime" class="form-label">Время закрытия</label>
+                        <input type="time" class="form-control" id="closeTime" name="closeTime" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Добавить автомойку</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Модальное окно для редактирования данных об автомойке -->
 <div class="modal fade" id="editCarWashModal" tabindex="-1" aria-labelledby="editCarWashModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCarWashModalLabel">Редактировать данные об автомойке</h5>
+                <h5 class="modal-title" id="editCarWashModalLabel">Редактировать автомойку</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="editStationForm" action="/owneraccount/updateStation" method="post">
+                    <input type="hidden" id="stationId" name="stationId">
+
                     <div class="mb-3">
-                        <label for="editCarWashName" class="form-label">Название автомойки</label>
-                        <input type="text" class="form-control" id="editCarWashName" name="carWashName" value="Sunshine Car Wash">
+                        <label for="stationName" class="form-label">Название автомойки</label>
+                        <input type="text" class="form-control" id="stationName" name="stationName" required>
                     </div>
                     <div class="mb-3">
-                        <label for="editCarWashAddress" class="form-label">Адрес</label>
-                        <input type="text" class="form-control" id="editCarWashAddress" name="carWashAddress" value="1234 Elm Street, Springfield">
+                        <label for="stationAddress" class="form-label">Адрес автомойки</label>
+                        <input type="text" class="form-control" id="stationAddress" name="stationAddress" required>
                     </div>
                     <div class="mb-3">
-                        <label for="editCarWashStatus" class="form-label">Статус</label>
-                        <input type="text" class="form-control" id="editCarWashStatus" name="carWashStatus" value="Активна">
+                        <label for="stationPhone" class="form-label">Телефон</label>
+                        <input type="text" class="form-control" id="stationPhone" name="stationPhone" required>
                     </div>
                     <div class="mb-3">
-                        <label for="editCarWashEmployees" class="form-label">Количество сотрудников</label>
-                        <input type="number" class="form-control" id="editCarWashEmployees" name="carWashEmployees" value="15">
+                        <label for="stationEmail" class="form-label">Эл. почта автомойки</label>
+                        <input type="email" class="form-control" id="stationEmail" name="stationEmail" required>
                     </div>
+                    <!-- Поля для времени открытия и закрытия -->
+                    <div class="mb-3">
+                        <label for="openTime" class="form-label">Время открытия</label>
+                        <input type="time" class="form-control" id="openTime" name="openTime" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="closeTime" class="form-label">Время закрытия</label>
+                        <input type="time" class="form-control" id="closeTime" name="closeTime" required>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                 </form>
             </div>
@@ -204,5 +237,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
