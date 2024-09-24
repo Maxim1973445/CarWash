@@ -28,7 +28,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><img src="/static/CarWashLogo.jpg" width="100%" height="60"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><img src="/static/CarWashLogo.jpg" width="60" height="60"/></svg>
                 <strong>&nbsp CarWash</strong>
             </a>
             <!--               <div for="isRegistry"></div><input type="text" id="isRegistry" name="isRegistry" th:value="${isRegistry}" readonly/>-->
@@ -93,13 +93,13 @@
 
 <div class="table" th:each="station : ${stations}">
     <input type="text" id="id" name="id" th:value="${station.id}" readonly/>
-    <input type="text" id="station_name" name="station_name" th:value="${station.station_name}" readonly/>
+    <input type="text" id="station_name" name="station_name" th:value="${station.stationName}" readonly/>
     <input type="text" id="address" name="address" th:value="${station.address} " readonly/>
     <input type="text" id="firstPhone" name="firstPhone" th:value="${station.firstPhone}" readonly/>
     <input type="text" id="secondPhone" name="secondPhone" th:value="${station.secondPhone}" readonly/>
     <input type="text" id="stationEmail" name="stationEmail" th:value="${station.stationEmail}" readonly/>
-    <input type="text" id="open_time" name="open_time" th:value="${station.open_time}" readonly/>
-    <input type="text" id="close_time" name="close_time" th:value="${station.close_time}" readonly/>
+    <input type="text" id="open_time" name="open_time" th:value="${station.openTime}" readonly/>
+    <input type="text" id="close_time" name="close_time" th:value="${station.closeTime}" readonly/>
 </div>
 
 <div class="album py-5 bg-body-tertiary">
@@ -107,8 +107,7 @@
         <div class="list-group">
             <div class="col">
                 <div class="card shadow-sm">
-                    <div class="mx-auto" style="width: 700px; height: 450px;">
-                        <img src="/static/a1.jpg" width="100%" height="100%"/>
+
                     </div>
                     <div class="card-body">
                         <div th:if="${station_name != null}">

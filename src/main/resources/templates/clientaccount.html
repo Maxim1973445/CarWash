@@ -88,10 +88,10 @@
         <div class="card-header">Информация о клиенте</div>
         <div class="card-body">
             <div>
-                <h5 class="card-title">Джейн Доу</h5>
-                <p class="card-text">Эл. почта: jane.doe@example.com</p>
-                <p class="card-text">Телефон: +1 555-555-1234</p>
-                <p class="card-text">Дата рождения: 1990-12-05</p>
+                <h5 class="card-title" th:text="${client.firstName} + ' ' + ${client.lastName}"></h5>
+                <p class="card-text">Эл. почта: <span th:text="${client.email}"></span></p>
+                <p class="card-text">Телефон: <span th:text="${client.phone}"></span></p>
+                <p class="card-text">Дата рождения: <span th:text="${client.dateOfBirth}"></span></p>
             </div>
             <!-- Кнопка открытия модального окна для редактирования профиля -->
             <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Редактировать профиль</a>
@@ -102,22 +102,24 @@
     <div class="card">
         <div class="card-header">Ваши заказы</div>
         <div class="card-body">
-            <div>
-                <h5 class="card-title">Заказ №12345</h5>
-                <p class="card-text">Статус: Завершен</p>
-                <p class="card-text">Сумма: $45</p>
+            <div th:if="${orders.isEmpty()}">
+                <p>У вас нет заказов.</p>
             </div>
-            <!-- Кнопка открытия модального окна для просмотра деталей заказа -->
-            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal">Просмотреть детали заказа</a>
-        </div>
-        <div class="card-body">
-            <div>
-                <h5 class="card-title">Заказ №12346</h5>
-                <p class="card-text">Статус: В процессе</p>
-                <p class="card-text">Сумма: $30</p>
+            <div th:if="${not #lists.isEmpty(orders)}">
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="order : ${orders}">
+                        <div>
+                            <h5 class="card-title">Заказ #<span th:text="${order.id}"></span></h5>
+                            <p class="card-text">Статус: <span th:text="${order.orderStatus}"></span></p>
+                            <p class="card-text">Дата заказа: <span th:text="${#dates.format(order.orderDate, 'dd-MM-yyyy')}"></span></p>
+                            <p class="card-text">Услуга: <span th:text="${order.service.name}"></span></p>
+                        </div>
+                        <!-- Кнопка открытия модального окна для просмотра деталей заказа -->
+                        <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal"
+                           th:attr="data-order-id=${order.id}">Просмотреть детали заказа</a>
+                    </li>
+                </ul>
             </div>
-            <!-- Кнопка открытия модального окна для просмотра деталей заказа -->
-            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal">Просмотреть детали заказа</a>
         </div>
     </div>
 
@@ -182,18 +184,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <!-- Форма для редактирования профиля с методом POST -->
+                <form action="/updateProfile" method="post">
                     <div class="mb-3">
                         <label for="editEmail" class="form-label">Эл. почта</label>
-                        <input type="email" class="form-control" id="editEmail" name="email" value="jane.doe@example.com">
+                        <input type="email" class="form-control" id="editEmail" name="email" th:value="${client.email}">
                     </div>
                     <div class="mb-3">
                         <label for="editPhone" class="form-label">Телефон</label>
-                        <input type="text" class="form-control" id="editPhone" name="phone" value="+1 555-555-1234">
+                        <input type="text" class="form-control" id="editPhone" name="phone" th:value="${client.phone}">
                     </div>
                     <div class="mb-3">
                         <label for="editBirthday" class="form-label">Дата рождения</label>
-                        <input type="date" class="form-control" id="editBirthday" name="birthday" value="1990-12-05">
+                        <input type="date" class="form-control" id="editBirthday" name="birthday" th:value="${client.dateOfBirth}">
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                 </form>
@@ -211,25 +214,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Информация о заказе №12345</p>
-                <p>Услуга: Мойка автомобиля</p>
-                <p>Статус: Завершен</p>
-                <p>Стоимость: $45</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Модальное окно для заказа услуги -->
-<div class="modal fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="servicesModalLabel">Заказать услугу</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Выберите услугу для заказа.</p>
+                <!-- Здесь будет выводиться информация о заказе -->
+                <form action="/orderDetails" method="post">
+                    <input type="hidden" id="orderId" name="orderId">
+                    <div id="orderDetailsContent">
+                        <!-- Здесь будет динамически отображаться информация о заказе -->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Закрыть</button>
+                </form>
             </div>
         </div>
     </div>
@@ -244,12 +236,62 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Добавьте новый автомобиль для заказа услуг.</p>
+                <!-- Форма для добавления автомобиля с методом POST -->
+                <form action="/addCar" method="post">
+                    <div class="mb-3">
+                        <label for="carNumber" class="form-label">Номер автомобиля</label>
+                        <input type="text" class="form-control" id="carNumber" name="carNumber" placeholder="Введите номер автомобиля" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="make" class="form-label">Марка</label>
+                        <input type="text" class="form-control" id="make" name="make" placeholder="Введите марку автомобиля" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="model" class="form-label">Модель</label>
+                        <input type="text" class="form-control" id="model" name="model" placeholder="Введите модель автомобиля" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carType" class="form-label">Тип автомобиля</label>
+                        <select class="form-select" id="carType" name="carType" required>
+                            <option value="SEDAN">Седан</option>
+                            <option value="SUV">Внедорожник</option>
+                            <option value="TRUCK">Грузовик</option>
+                            <option value="COUPE">Купе</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Добавить автомобиль</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Скрипт для динамической загрузки деталей заказа -->
+<script>
+    const orderDetailsModal = document.getElementById('orderDetailsModal');
+
+    orderDetailsModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const orderId = button.getAttribute('data-order-id');
+
+        // Подставляем id заказа в скрытое поле формы
+        document.getElementById('orderId').value = orderId;
+
+        // Получение информации о заказе и заполнение модального окна
+        fetch(`/api/orders/${orderId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('orderDetailsContent').innerHTML = `
+                    <p>Заказ #${data.id}</p>
+                    <p>Статус: ${data.orderStatus}</p>
+                    <p>Дата заказа: ${new Date(data.orderDate).toLocaleDateString()}</p>
+                    <p>Услуга: ${data.service.name}</p>
+                `;
+            });
+    });
+</script>
+
 </body>
 </html>

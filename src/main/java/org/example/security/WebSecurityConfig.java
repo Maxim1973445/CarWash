@@ -22,7 +22,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/", "/static/**", "/registrationowner",
                                         "/registration", "/authcheck", "/addclient", "/addowner",
                                         "/auth").permitAll()
-                                .requestMatchers("/owneraccount/**", "/order/**").hasRole("OWNER")
+                                .requestMatchers("/owneraccount/**", "/order/**", "/stationlist").hasRole("OWNER")
                                 .requestMatchers("/clientaccount/**").hasRole("CLIENT")
                                 .anyRequest().authenticated()
                 )

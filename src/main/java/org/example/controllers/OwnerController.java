@@ -74,9 +74,9 @@ public class OwnerController {
     @PostMapping(value = "/owneraccount/update")
     public String updateAccount(HttpServletRequest request) {
         Person owner = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        owner.setEmail(request.getParameter("email").isBlank() ? request.getParameter("email") : "");
-        owner.setPhone(request.getParameter("phone").isBlank() ? request.getParameter("phone") : "");
-        owner.setEmail(request.getParameter("birthday").isBlank() ? request.getParameter("birthday") : "");
+        owner.setEmail(request.getParameter("email").isBlank() ? owner.getEmail() : request.getParameter("email"));
+        owner.setPhone(request.getParameter("phone").isBlank() ? owner.getPhone() : request.getParameter("phone"));
+        owner.setDateOfBirth(request.getParameter("birthday").isBlank() ? owner.getDateOfBirth() : LocalDate.parse(request.getParameter("birthday")));
         userService.updateUser(owner);
         String message = "Редактирование профиля с логином " + owner.getLogin();
         log.info(message);
@@ -93,9 +93,9 @@ public class OwnerController {
                 null,
                 null,
                 request.getParameter("carWashAddress"),
+                request.getParameter("carWashPhone"),
                 null,
-                null,
-                null,
+                request.getParameter("carWashEmail"),
                 null,
                 null,
                 null,
