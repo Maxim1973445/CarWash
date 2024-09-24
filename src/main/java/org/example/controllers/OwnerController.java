@@ -52,6 +52,7 @@ public class OwnerController {
                 null,
                 null,
                 RoleType.OWNER,
+                null,
                 null
         );
         userService.createUser(owner);

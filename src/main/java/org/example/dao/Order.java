@@ -25,6 +25,8 @@ public class Order {
     @ManyToOne(cascade = CascadeType.MERGE)
     private Car car;
     @ManyToOne(cascade = CascadeType.MERGE)
+    private Person person;
+    @ManyToOne(cascade = CascadeType.MERGE)
     private StationService service;
     @ManyToOne(cascade = CascadeType.MERGE)
     private Station station;

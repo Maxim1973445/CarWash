@@ -49,6 +49,8 @@ public class Person {
 
     @OneToMany(mappedBy = "person")
     private List<Car> cars;
+    @OneToMany(mappedBy = "person")
+    private Set<Order> persons;
 
     @Override
     public String toString() {
