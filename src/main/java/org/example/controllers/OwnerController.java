@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -41,8 +42,9 @@ public class OwnerController {
     @PostMapping(value = "/addowner")
     public String add(Model model, HttpServletRequest request) {
         LocalDate date = LocalDate.parse(request.getParameter("birthdate"));
+        Long count = userService.count();
         Person owner = new Person(
-                (long) (Math.random() * 1000),
+                ++count,
                 request.getParameter("login"),
                 request.getParameter("password"),
                 request.getParameter("firstname"),
@@ -51,6 +53,7 @@ public class OwnerController {
                 null,
                 null,
                 RoleType.OWNER,
+                null,
                 null
         );
         userService.createUser(owner);
@@ -87,11 +90,13 @@ public class OwnerController {
     @PostMapping(value = "/owneraccount/addstation")
     public String addStation(HttpServletRequest request) {
         Person owner = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Long count = stationService.count();
+
         Station station = new Station(
-                (long) (Math.random() * 1000),
+                ++count,
                 request.getParameter("carWashName"),
-                null,
-                null,
+                LocalTime.parse(request.getParameter("openTime")),
+                LocalTime.parse(request.getParameter("closeTime")),
                 request.getParameter("carWashAddress"),
                 request.getParameter("carWashPhone"),
                 null,
@@ -108,5 +113,22 @@ public class OwnerController {
         return "redirect:/owneraccount";
     }
 
+    @PostMapping(value = "owneraccount/updateStation")
+    public String updateStation(HttpServletRequest request) {
+        Station station = stationService.getStationById(Long.parseLong(request.getParameter("stationId")));
+        station.setStationName(request.getParameter("stationName").isBlank() ? station.getStationName() : request.getParameter("stationName"));
+        station.setAddress(request.getParameter("stationAddress").isBlank() ? station.getAddress() : request.getParameter("stationAddress"));
+        station.setFirstPhone(request.getParameter("stationPhone").isBlank() ? station.getFirstPhone() : request.getParameter("stationPhone"));
+        station.setStationEmail(request.getParameter("stationEmail").isBlank() ? station.getStationEmail() : request.getParameter("stationEmail"));
+        station.setOpenTime(request.getParameter("openTime").isBlank() ? station.getOpenTime() : LocalTime.parse(request.getParameter("openTime")));
+        station.setCloseTime(request.getParameter("closeTime").isBlank() ? station.getCloseTime() : LocalTime.parse(request.getParameter("closeTime")));
+        stationService.updateStation(station);
+        return "redirect:/owneraccount";
+    }
 
+    @PostMapping(value = "/owneraccount/deleteService")
+    public String deleteService(HttpServletRequest request) {
+        stationService.deleteStation(Long.parseLong(request.getParameter("stationId")));
+        return "redirect:/owneraccount";
+    }
 }

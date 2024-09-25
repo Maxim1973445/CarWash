@@ -1,8 +1,8 @@
 package org.example.service.Impl;
 
 
-import lombok.extern.java.Log;
-import org.example.dao.*;
+import jakarta.transaction.Transactional;
+import org.example.dao.Car;
 import org.example.enums.CarType;
 import org.example.enums.LogStatus;
 import org.example.repository.CarRepository;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
-
 import java.util.List;
 
 @Service
@@ -122,5 +121,32 @@ public class CarServiceImpl implements CarService {
             throw new IllegalArgumentException("Автомобиля с данным номером нет в БД");
         }
         carRepository.deleteById(id);
+    }
+
+    public Long count() {
+        return carRepository.count();
+    }
+
+    public CarType getType(String value) {
+        switch (value) {
+            case "SEDAN":
+                return CarType.SEDAN;
+            case "SUV":
+                return CarType.SUV;
+            case "CROSSOVER":
+                return CarType.CROSSOVER;
+            case "HATCHBACK":
+                return CarType.HATCHBACK;
+            case "COMBY":
+                return CarType.COMBY;
+            case "WAGON":
+                return CarType.WAGON;
+            case "CONVERTIBLE":
+                return CarType.CONVERTIBLE;
+            case "MINIVAN":
+                return CarType.MINIVAN;
+            default:
+                return null;
+        }
     }
 }

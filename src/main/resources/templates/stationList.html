@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Список автомоек</title>
+    <title>Список заказов</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -27,7 +27,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center">
-                <img src="CarWashLogo.jpg" width="100%" height="60"/>
+                <img src="/static/CarWashLogo.jpg" width="60" height="60"/>
                 <strong>&nbsp CarWash</strong>
             </a>
             <a href="/owneraccount" class="btn btn-outline-light ms-auto">Назад</a>
@@ -38,31 +38,41 @@
 
 <main class="container py-4">
     <h1 class="h3 mb-3 fw-normal" th:text="${station.stationName}"></h1>
-    <div th:each="order:${station.orders}">
-        <div>
+    <p class="mb-3">Адрес: <span th:text="${station.address}"></span></p>
+    <p class="mb-3">Время работы: с <span th:text="${station.openTime}"></span> до <span th:text="${station.closeTime}"></span></p>
 
+    <!-- Список заказов для текущей автомойки -->
+    <h2 class="h4 mb-3">Заказы</h2>
+    <div th:if="${ordersIsEmpty}">
+        <p class="text-muted">Заказы отсутствуют.</p>
+    </div>
+
+    <div th:each="order : ${station.orders}">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Заказ #<span th:text="${order.id}"></span></h5>
+
+                <!-- Форма для изменения статуса -->
+                <form action="/order/updateStatus" method="post" class="d-flex align-items-center mb-3">
+                    <input type="hidden" name="orderId" th:value="${order.id}">
+                    <label for="status" class="form-label me-2">Статус:</label>
+                    <select id="status" name="status" class="form-select w-auto me-2" required>
+                        <option value="NEW" th:selected="${order.orderStatus == 'NEW'}">Новый</option>
+                        <option value="IN_PROGRESS" th:selected="${order.orderStatus == 'IN_PROGRESS'}">В процессе</option>
+                        <option value="COMPLETED" th:selected="${order.orderStatus == 'COMPLETED'}">Завершен</option>
+                        <option value="CANCELLED" th:selected="${order.orderStatus == 'CANCELLED'}">Отменен</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary btn-sm">Изменить статус</button>
+                </form>
+
+                <p class="card-text">Время начала: <span th:text="${order.startTime.getHour()}+':00'"></span></p>
+                <p class="card-text">Время завершения: <span th:text="${order.endTime.getHour()}+':00'"></span></p>
+                <p class="card-text">Дата заказа: <span th:text="${order.orderDate.getYear()}"></span></p>
+                <p class="card-text">Услуга: <span th:text="${order.service.name}"></span></p>
+                <p class="card-text">Автомобиль: <span th:text="${order.car.make} + ' ' + ${order.car.model}"></span></p>
+            </div>
         </div>
-
-<!--    <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!--            <div class="list-group">-->
-<!--                <div th:each="station : ${stations}" class="list-group-item">-->
-<!--                    <h5 class="mb-1" th:text="${station.stationName}"></h5>-->
-<!--                    <p class="mb-1" th:text="${station.address}"></p>-->
-<!--                    <form action="/owneraccount/changeStatus" method="post" class="d-inline">-->
-<!--                        <input type="hidden" name="stationId" th:value="${station.id}">-->
-<!--                        <select name="status" class="form-select d-inline w-auto" required>-->
-<!--                            <option value="OPEN" th:selected="${station.status == 'OPEN'}">Открыта</option>-->
-<!--                            <option value="CLOSED" th:selected="${station.status == 'CLOSED'}">Закрыта</option>-->
-<!--                            <option value="IN_MAINTENANCE" th:selected="${station.status == 'IN_MAINTENANCE'}">На ремонте</option>-->
-<!--                            <option value="CLOSED_TEMPORARILY" th:selected="${station.status == 'CLOSED_TEMPORARILY'}">Временно закрыта</option>-->
-<!--                        </select>-->
-<!--                        <button type="submit" class="btn btn-primary btn-sm ms-2">Обновить статус</button>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

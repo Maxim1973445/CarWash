@@ -31,8 +31,6 @@ public class DataBaseTests {
     @Autowired
     private OrderServiceImpl orderServiceImpl;
     @Autowired
-    private PersonRepository personRepository;
-    @Autowired
     private SlotService slotService;
 
 
@@ -45,18 +43,19 @@ public class DataBaseTests {
     }
     @Test
     public void insertCarTest() {
-        Car car = new Car();
+        org.example.dao.Car car = new org.example.dao.Car();
         car.setCarNumber("343");
         car.setCarType(CarType.CROSSOVER);
         car.setMake("KIA");
         car.setModel("k5");
         Person person = new Person();
+        person.setId(12L);
         person.setLogin("vanya");
         person.setPassword("124");
         person.setFirstName("Ivan");
         person.setLastName("Ivanov");
         person.setEmail("vanya@gmail.com");
-        person.setDateOfBirth(new Date(1990,4,12));
+        person.setDateOfBirth(LocalDate.of(1990, 1, 1));
         person.setRole(RoleType.ADMIN);
         Person user = userServiceImpl.getUserByEmail(person.getEmail());
         if(user ==null)
@@ -66,7 +65,7 @@ public class DataBaseTests {
     }
     @Test
     public void getPersonsByStationIdTest() {
-        Car car = new Car();
+        org.example.dao.Car car = new org.example.dao.Car();
         car.setCarNumber("351");
         car.setCarType(CarType.CONVERTIBLE);
         car.setMake("KIA");
@@ -82,7 +81,7 @@ public class DataBaseTests {
         person.setFirstName("Iliya");
         person.setLastName("Iliya");
         person.setEmail("iliya@gmail.com");
-        person.setDateOfBirth(new Date(1990,8,12));
+        person.setDateOfBirth(LocalDate.of(1990,8,12));
         person.setRole(RoleType.OWNER);
         Station station = new Station();
         station.setAddress("Екатеринбург, ул. Вавилова 12");
@@ -117,7 +116,7 @@ public class DataBaseTests {
     }
     @Test
     public void updateCarTest(){
-        Car car = carServiceImpl.getCarByCarNumber("343");
+        org.example.dao.Car car = carServiceImpl.getCarByCarNumber("343");
         car.setCarType(CarType.SUV);
         carServiceImpl.updateCar(car);
     }

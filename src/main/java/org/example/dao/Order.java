@@ -1,7 +1,9 @@
 package org.example.dao;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.enums.OrderStatus;
 
@@ -9,9 +11,11 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="orders")
+@Table(name= "orders")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +28,8 @@ public class Order {
     private LocalDateTime orderDate;
     @ManyToOne(cascade = CascadeType.MERGE)
     private Car car;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Person person;
     @ManyToOne(cascade = CascadeType.MERGE)
     private StationService service;
     @ManyToOne(cascade = CascadeType.MERGE)

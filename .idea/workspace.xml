@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="прикрутил логирование">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/StationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/stationList.html" afterDir="false" />
+    <list default="true" id="2be01afa-0306-4d2f-8184-5cc8d27b295a" name="Changes" comment="готов ЛК клиента&#10;готова запись клиента &#10;готова главная">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/OwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/OwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/StationController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/clientaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/clientaccount.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/owneraccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stationList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/stationList.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +27,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -66,6 +69,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;JUnit.DataBaseTests.getPersonsByStationIdTest.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.DataBaseTests.getPersonsTest.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.DataBaseTests.insertCarTest.executor&quot;: &quot;Debug&quot;,
@@ -173,6 +177,8 @@
       <workItem from="1726840309542" duration="9289000" />
       <workItem from="1726860918786" duration="1230000" />
       <workItem from="1726992572411" duration="19848000" />
+      <workItem from="1727155919305" duration="15910000" />
+      <workItem from="1726992572411" duration="19848000" />
       <workItem from="1727155919305" duration="3975000" />
     </task>
     <task id="LOCAL-00001" summary="Ещё">
@@ -215,7 +221,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727010754696</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="доработки ЛК владельца">
+      <option name="closed" value="true" />
+      <created>1727160449281</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727160449281</updated>
+    </task>
+    <task id="LOCAL-00007" summary="готов ЛК клиента&#10;готова запись клиента &#10;готова главная">
+      <option name="closed" value="true" />
+      <created>1727268723646</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727268723646</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +248,15 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="122" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="82" />
+                  <entry key="Table.GitHub.CommitStatus.ColumnIdWidth" value="76" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -240,7 +270,7 @@
     <MESSAGE value="Добавили запись на мойку" />
     <MESSAGE value="Настроил Spring Security, готовы контроллеры для авторизации, регистрации, ЛК и главной страницы" />
     <MESSAGE value="поправил ЛК владельца" />
-    <MESSAGE value="прикрутил логирование" />
-    <option name="LAST_COMMIT_MESSAGE" value="прикрутил логирование" />
+    <MESSAGE value="готов ЛК клиента&#10;готова запись клиента &#10;готова главная" />
+    <option name="LAST_COMMIT_MESSAGE" value="готов ЛК клиента&#10;готова запись клиента &#10;готова главная" />
   </component>
 </project>

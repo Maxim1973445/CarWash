@@ -7,23 +7,28 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="cars")
-
+@Table(name= "cars")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
+
     @Column(name="car_number", unique = true,nullable = false)
     private String carNumber;
+
     @Column(name="car_make")
     private String make;
+
     @Column(name="car_model")
     private String model;
+
     @Column(name="car_type")
     @Enumerated(EnumType.STRING)
     private CarType carType;
+
     @OneToMany(mappedBy = "car")
     private Set<Order> orders;
 

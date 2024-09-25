@@ -9,10 +9,9 @@ import org.example.enums.LogStatus;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-@Table(name="logs")
+@Table(name= "logs")
 @Setter
 @Getter
 @AllArgsConstructor

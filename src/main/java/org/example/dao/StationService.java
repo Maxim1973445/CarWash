@@ -1,6 +1,8 @@
 package org.example.dao;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
@@ -8,12 +10,13 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="stationservices")
+@Table(name= "stationservices")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class StationService {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "service_name")
     private String name;

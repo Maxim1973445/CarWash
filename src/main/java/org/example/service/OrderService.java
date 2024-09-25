@@ -1,8 +1,10 @@
 package org.example.service;
 
 import org.example.dao.*;
+import org.example.enums.OrderStatus;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrderService {
@@ -15,5 +17,13 @@ public interface OrderService {
     Station getStationByOrderId(long orderId);
     List<Order> getOrdersForStationToDay(Long stationId, LocalDate date);
 
-    Order getOrderByDate(String dateTime);
+    List<Order> getOrdersByDate(String dateTime);
+    List<Order> getOrdersByStationWithStatusBetween(
+            Long statId,
+            LocalDateTime startTime,
+            LocalDateTime endTime,
+            OrderStatus orderStatus);
+
+    List<Order> getOrdersByStationBetween(Long statId, LocalDateTime startTime, LocalDateTime endTime);
+    List<Person> getClientsByStationBetween(Long statId, LocalDateTime startTime, LocalDateTime endTime);
 }

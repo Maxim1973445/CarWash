@@ -6,6 +6,7 @@ import org.example.dao.Order;
 import org.example.dao.Person;
 import org.example.dao.Station;
 import org.example.enums.LogStatus;
+import org.example.enums.OrderStatus;
 import org.example.repository.OrderRepository;
 import org.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,11 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+
+import java.util.stream.Stream;
 
 @Service
 @Transactional
@@ -108,7 +113,58 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrderByDate(String dateTime) {
-        return null;
+    public List<Order> getOrdersByDate(String dateTime) {
+        LocalDate date = LocalDate.parse(dateTime);
+        LocalDateTime startDate = LocalDateTime.of(date.getYear(),date.getMonth(),date.getDayOfMonth(),0,0,0);
+        LocalDateTime endDate = LocalDateTime.of(date.getYear(),date.getMonth(),date.getDayOfMonth(),23,59,59);
+
+
+        return orderRepository.findAll()
+                .stream()
+                .filter(order->order.getStartTime().isAfter(startDate)&&order.getStartTime().isBefore(endDate))
+                .toList();
+    }
+
+    @Override
+    public List<Order> getOrdersByStationWithStatusBetween(
+            Long statId,
+            LocalDateTime startTime,
+            LocalDateTime endTime,
+            OrderStatus orderStatus) {
+        Stream<Order> orders = orderRepository.getOrdersByStationId(statId)
+                .stream()
+                .filter(order -> order.getStartTime().isAfter(startTime) && order.getStartTime().isBefore(endTime));
+        if (orderStatus != null)
+            orders = orders.filter(order -> order.getOrderStatus().equals(orderStatus));
+        return orders.toList();
+    }
+
+    @Override
+    public List<Order> getOrdersByStationBetween(Long stationId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        List<Order> ordersBetweenDate = new ArrayList<>();
+        List<Order> orders = orderRepository.getOrdersByStationId(stationId);
+        for (Order order : orders) {
+            if (order.getStartTime().isAfter(startDateTime) && order.getStartTime().isBefore(endDateTime)) {
+                ordersBetweenDate.add(order);
+            }
+        }
+        return ordersBetweenDate;
+    }
+
+    @Override
+    public List<Person> getClientsByStationBetween(Long stationId, LocalDateTime startTime, LocalDateTime endTime) {
+        List<Person> distinctOrdersBetween = new ArrayList<>();
+        List<Order> orders = orderRepository.getOrdersByStationId(stationId);
+        for (Order order : orders) {
+            if (order.getStartTime().isAfter(startTime) && order.getStartTime().isBefore(endTime)) {
+                if (!distinctOrdersBetween.contains(order.getPerson()))
+                    distinctOrdersBetween.add(order.getPerson());
+            }
+        }
+        return distinctOrdersBetween;
+    }
+
+    public Long count(){
+        return orderRepository.count();
     }
 }

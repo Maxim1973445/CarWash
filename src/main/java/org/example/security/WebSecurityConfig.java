@@ -20,10 +20,11 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         authz -> authz
                                 .requestMatchers("/", "/static/**", "/registrationowner",
-                                        "/registration", "/authcheck", "/addclient", "/addowner",
+                                        "/registration", "/addclient", "/addowner",
                                         "/auth").permitAll()
-                                .requestMatchers("/owneraccount/**", "/order/**", "/stationlist").hasRole("OWNER")
-                                .requestMatchers("/clientaccount/**").hasRole("CLIENT")
+                                .requestMatchers("/owneraccount/**", "/order/**", "/stationList").hasRole("OWNER")
+                                .requestMatchers("/clientaccount/**", "/addCar", "/changeDate",
+                                        "/deleteOrder", "/sendRegister").hasRole("CLIENT")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(
