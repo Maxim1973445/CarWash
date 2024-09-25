@@ -21,9 +21,10 @@ public class WebSecurityConfig {
                         authz -> authz
                                 .requestMatchers("/", "/static/**", "/registrationowner",
                                         "/registration", "/authcheck", "/addclient", "/addowner",
-                                        "/auth").permitAll()
+                                        "/auth", "/sendRegister").permitAll()
                                 .requestMatchers("/owneraccount/**", "/order/**", "/stationlist").hasRole("OWNER")
-                                .requestMatchers("/clientaccount/**", "/addCar").hasRole("CLIENT")
+                                .requestMatchers("/clientaccount/**", "/addCar", "/changeDate",
+                                        "/deleteOrder").hasRole("CLIENT")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(

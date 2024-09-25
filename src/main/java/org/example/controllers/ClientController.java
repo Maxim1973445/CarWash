@@ -40,8 +40,18 @@ public class ClientController {
     @GetMapping(value = "/clientaccount")
     public String clientAccount(Model model) {
         Person client = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        List<Car> cars = carService.getAllCars().stream().filter(e->e.getPerson().getId().equals(client.getId())).toList();
-        List<Order> orders = orderService.getAllOrders().stream().filter(e->e.getCar().getPerson().getId().equals(client.getId())).toList();
+        List<Car> cars = carService.getAllCars().stream().filter(e -> e.getPerson().getId().equals(client.getId())).toList();
+        List<Order> orders = orderService.getAllOrders().stream().filter(e -> e.getCar().getPerson().getId().equals(client.getId())).toList();
+        if (cars.isEmpty()) {
+            model.addAttribute("carsIsEmpty", true);
+        } else {
+            model.addAttribute("carsIsEmpty", false);
+        }
+        if (orders.isEmpty()) {
+            model.addAttribute("ordersIsEmpty", true);
+        } else {
+            model.addAttribute("ordersIsEmpty", false);
+        }
         model.addAttribute("client", client);
         model.addAttribute("cars", cars);
         model.addAttribute("orders", orders);

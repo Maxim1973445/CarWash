@@ -133,10 +133,18 @@ public class CarServiceImpl implements CarService {
                 return CarType.SEDAN;
             case "SUV":
                 return CarType.SUV;
-            case "TRUCK":
+            case "CROSSOVER":
                 return CarType.CROSSOVER;
-            case "COUPE":
+            case "HATCHBACK":
                 return CarType.HATCHBACK;
+            case "COMBY":
+                return CarType.COMBY;
+            case "WAGON":
+                return CarType.WAGON;
+            case "CONVERTIBLE":
+                return CarType.CONVERTIBLE;
+            case "MINIVAN":
+                return CarType.MINIVAN;
             default:
                 return null;
         }

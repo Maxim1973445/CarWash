@@ -94,62 +94,33 @@
                 <p class="card-text">Дата рождения: <span th:text="${client.dateOfBirth}"></span></p>
             </div>
             <!-- Кнопка открытия модального окна для редактирования профиля -->
-            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Редактировать профиль</a>
-        </div>
-    </div>
-
-    <!-- Ваши заказы -->
-    <div class="card">
-        <div class="card-header">Ваши заказы</div>
-        <div class="card-body">
-            <div th:if="${orders.isEmpty()}">
-                <p>У вас нет заказов.</p>
-            </div>
-            <div th:if="${not #lists.isEmpty(orders)}">
-                <ul class="list-group">
-                    <li class="list-group-item" th:each="order : ${orders}">
-                        <div>
-                            <h5 class="card-title">Заказ #<span th:text="${order.id}"></span></h5>
-                            <p class="card-text">Статус: <span th:text="${order.orderStatus}"></span></p>
-                            <p class="card-text">Дата заказа: <span th:text="${#dates.format(order.orderDate, 'dd-MM-yyyy')}"></span></p>
-                            <p class="card-text">Услуга: <span th:text="${order.service.name}"></span></p>
-                        </div>
-                        <!-- Кнопка открытия модального окна для просмотра деталей заказа -->
-                        <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal"
-                           th:attr="data-order-id=${order.id}">Просмотреть детали заказа</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="#" class="btn btn-secondary">Просмотреть детали заказа</a>
+            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Редактировать
+                профиль</a>
         </div>
     </div>
 
     <!-- Доступные услуги -->
     <div class="card">
-        <div class="card-header">Доступные услуги</div>
         <div class="card-body">
-            <ul class="list-group">
-                <!-- Здесь можно добавить список доступных услуг, если нужно -->
-            </ul>
-
-            <!-- Перемещаем кнопку влево и изменяем нажатие для открытия main.html -->
-            <a href="main.html" class="btn btn-primary mt-3">Записаться</a>
+            <a href="/" class="btn btn-primary mt-3" style="float: left">Записаться</a>
             <!-- Кнопка открытия модального окна для добавления автомобиля -->
-            <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addCarModal">Добавить автомобиль</a>
+            <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addCarModal">Добавить
+                автомобиль</a>
         </div>
     </div>
     <!-- Список машин клиента -->
     <div class="card">
         <div class="card-header">Ваши автомобили</div>
         <div class="card-body">
-            <div th:if="${cars.isEmpty}">
+            <div th:if="${carsIsEmpty}">
                 <p>У вас нет добавленных автомобилей.</p>
             </div>
-            <div th:if="${cars != null and !cars.isEmpty()}">
+            <div th:if="${!carsIsEmpty}">
                 <ul class="list-group">
                     <li class="list-group-item" th:each="car : ${cars}">
                         <div>
-                            <h5 class="card-title">Автомобиль: <span th:text="${car.make} + ' ' + ${car.model}"></span></h5>
+                            <h5 class="card-title">Автомобиль: <span th:text="${car.make} + ' ' + ${car.model}"></span>
+                            </h5>
                             <p class="card-text">Номер: <span th:text="${car.carNumber}"></span></p>
                             <p class="card-text">Тип: <span th:text="${car.carType}"></span></p>
                         </div>
@@ -165,20 +136,21 @@
     <div class="card">
         <div class="card-header">Ваши заказы</div>
         <div class="card-body">
-            <div th:if="${orders == null or orders.isEmpty()}">
+            <div th:if="${ordersIsEmpty}">
                 <p>У вас нет заказов.</p>
             </div>
-            <div th:if="${orders != null and !orders.isEmpty()}">
+            <div th:if="${!ordersIsEmpty}">
                 <ul class="list-group">
                     <li class="list-group-item" th:each="order : ${orders}">
                         <div>
                             <h5 class="card-title">Заказ #<span th:text="${order.id}"></span></h5>
                             <p class="card-text">Статус: <span th:text="${order.orderStatus}"></span></p>
-                            <p class="card-text">Дата заказа: <span th:text="${#dates.format(order.orderDate, 'dd-MM-yyyy')}"></span></p>
+                            <p class="card-text">Дата заказа: <span th:text="${order.orderDate}"></span></p>
                             <p class="card-text">Услуга: <span th:text="${order.service.name}"></span></p>
+                            <p class="card-text">Стоимость: <span th:text="${order.service.price}+' руб.'"></span></p>
                         </div>
                         <!-- Кнопка Отменить заказ -->
-                        <form action="/deliteOrder" method="post">
+                        <form action="/deleteOrder" method="post">
                             <input type="hidden" name="orderId" th:value="${order.id}">
                             <button type="submit" class="btn btn-secondary">Отменить заказ</button>
                         </form>
@@ -189,12 +161,11 @@
     </div>
 
 
-
-
     <!-- Модальные окна -->
 
     <!-- Модальное окно для редактирования профиля -->
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -206,15 +177,18 @@
                     <form action="/updateProfile" method="post">
                         <div class="mb-3">
                             <label for="editEmail" class="form-label">Эл. почта</label>
-                            <input type="email" class="form-control" id="editEmail" name="email" th:value="${client.email}">
+                            <input type="email" class="form-control" id="editEmail" name="email"
+                                   th:value="${client.email}">
                         </div>
                         <div class="mb-3">
                             <label for="editPhone" class="form-label">Телефон</label>
-                            <input type="text" class="form-control" id="editPhone" name="phone" th:value="${client.phone}">
+                            <input type="text" class="form-control" id="editPhone" name="phone"
+                                   th:value="${client.phone}">
                         </div>
                         <div class="mb-3">
                             <label for="editBirthday" class="form-label">Дата рождения</label>
-                            <input type="date" class="form-control" id="editBirthday" name="birthday" th:value="${client.dateOfBirth}">
+                            <input type="date" class="form-control" id="editBirthday" name="birthday"
+                                   th:value="${client.dateOfBirth}">
                         </div>
                         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                     </form>
@@ -224,7 +198,8 @@
     </div>
 
     <!-- Модальное окно для деталей заказа -->
-    <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -255,19 +230,31 @@
                     <form action="/addCar" method="post">
                         <div class="mb-3">
                             <label for="carMake" class="form-label">Марка</label>
-                            <input type="text" class="form-control" id="carMake" name="make" placeholder="Введите марку автомобиля">
+                            <input type="text" class="form-control" id="carMake" name="make"
+                                   placeholder="Введите марку автомобиля">
                         </div>
                         <div class="mb-3">
                             <label for="carModel" class="form-label">Модель</label>
-                            <input type="text" class="form-control" id="carModel" name="model" placeholder="Введите модель автомобиля">
+                            <input type="text" class="form-control" id="carModel" name="model"
+                                   placeholder="Введите модель автомобиля">
                         </div>
                         <div class="mb-3">
                             <label for="carNumber" class="form-label">Номер автомобиля</label>
-                            <input type="text" class="form-control" id="carNumber" name="carNumber" placeholder="Введите номер автомобиля">
+                            <input type="text" class="form-control" id="carNumber" name="carNumber"
+                                   placeholder="Введите номер автомобиля">
                         </div>
                         <div class="mb-3">
-                            <label for="carType" class="form-label">Тип автомобиля</label>
-                            <input type="text" class="form-control" id="carType" name="carType" placeholder="Введите тип автомобиля">
+                            <label for="carType" class="form-label">Выберите услугу</label>
+                            <select class="form-select" id="carType" name="carType" required>
+                                <option value="COMBY">COMBY</option>
+                                <option value="SEDAN">SEDAN</option>
+                                <option value="CROSSOVER">CROSSOVER</option>
+                                <option value="SUV">SUV</option>
+                                <option value="WAGON">WAGON</option>
+                                <option value="CONVERTIBLE">CONVERTIBLE</option>
+                                <option value="MINIVAN">MINIVAN</option>
+                                <option value="HATCHBACK">HATCHBACK</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Добавить автомобиль</button>
                     </form>

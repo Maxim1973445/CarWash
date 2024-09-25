@@ -111,4 +111,8 @@ public class OrderServiceImpl implements OrderService {
     public Order getOrderByDate(String dateTime) {
         return null;
     }
+
+    public Long count(){
+        return orderRepository.count();
+    }
 }

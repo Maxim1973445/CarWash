@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -90,11 +91,12 @@ public class OwnerController {
     public String addStation(HttpServletRequest request) {
         Person owner = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Long count = stationService.count();
+
         Station station = new Station(
                 ++count,
                 request.getParameter("carWashName"),
-                null,
-                null,
+                LocalTime.parse(request.getParameter("openTime")),
+                LocalTime.parse(request.getParameter("closeTime")),
                 request.getParameter("carWashAddress"),
                 request.getParameter("carWashPhone"),
                 null,

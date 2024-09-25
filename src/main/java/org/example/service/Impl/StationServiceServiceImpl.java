@@ -1,5 +1,6 @@
 package org.example.service.Impl;
 
+import jakarta.transaction.Transactional;
 import org.example.dao.Order;
 import org.example.dao.StationService;
 import org.example.repository.StationServiceRepository;
@@ -7,7 +8,6 @@ import org.example.service.StationServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -54,6 +54,39 @@ public class StationServiceServiceImpl implements StationServiceService {
     public void deleteStationServiceById(long id) {
         if (stationServiceRepository.existsById(id)) {
             stationServiceRepository.deleteById(id);
+        }
+    }
+
+    public Long count() {
+        return stationServiceRepository.count();
+    }
+
+    public StationService factoryService(String value) {
+        Long count = stationServiceRepository.count();
+        switch (value) {
+            case "wash":
+                return new StationService(
+                        ++count,
+                        "Мойка",
+                        1000,
+                        null
+                );
+            case "polish":
+                return new StationService(
+                        ++count,
+                        "Мойка",
+                        5000,
+                        null
+                );
+            case "cleaning":
+                return new StationService(
+                        ++count,
+                        "Мойка",
+                        2400,
+                        null
+                );
+            default:
+                return null;
         }
     }
 
