@@ -6,14 +6,16 @@ import org.example.dao.Order;
 import org.example.dao.Person;
 import org.example.dao.Station;
 import org.example.repository.OrderRepository;
-import org.example.repository.PersonRepository;
 import org.example.repository.StationRepository;
+import org.example.service.OrderService;
 import org.example.service.StationService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +24,11 @@ import java.util.List;
 public class StationServiceImpl implements StationService {
 
     private final StationRepository stationRepository;
-    private final OrderRepository orderRepository;
     private final UserService userService;
 
     @Autowired
-    public StationServiceImpl(StationRepository stationRepository, OrderRepository orderRepository, UserServiceImpl userService) {
+    public StationServiceImpl(StationRepository stationRepository, UserServiceImpl userService) {
         this.stationRepository = stationRepository;
-        this.orderRepository = orderRepository;
         this.userService = userService;
 
     }
@@ -70,10 +70,10 @@ public class StationServiceImpl implements StationService {
         return stationRepository.findById(id).get().getOrders();
     }
 
+
     @Override
     public List<Person> getClientsByStationId(long id) {
-        List<Order> orders = orderRepository.findAll();
-        List<Car> cars = orders.stream().map(Order::getCar).toList();
-        return cars.stream().map(Car::getPerson).toList();
+        return stationRepository.findById(id).get().getOrders().stream().map(Order::getPerson).toList();
     }
+
 }

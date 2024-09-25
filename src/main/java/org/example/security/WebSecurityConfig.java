@@ -21,7 +21,7 @@ public class WebSecurityConfig {
                         authz -> authz
                                 .requestMatchers("/", "/static/**", "/registrationowner",
                                         "/registration", "/authcheck", "/addclient", "/addowner",
-                                        "/auth").permitAll()
+                                        "/auth","/statistics").permitAll()
                                 .requestMatchers("/owneraccount/**").hasRole("OWNER")
                                 .requestMatchers("/clientaccount/**").hasRole("CLIENT")
                                 .anyRequest().authenticated()
