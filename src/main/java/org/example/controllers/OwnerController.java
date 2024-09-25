@@ -113,5 +113,22 @@ public class OwnerController {
         return "redirect:/owneraccount";
     }
 
+    @PostMapping(value = "owneraccount/updateStation")
+    public String updateStation(HttpServletRequest request) {
+        Station station = stationService.getStationById(Long.parseLong(request.getParameter("stationId")));
+        station.setStationName(request.getParameter("stationName").isBlank() ? station.getStationName() : request.getParameter("stationName"));
+        station.setAddress(request.getParameter("stationAddress").isBlank() ? station.getAddress() : request.getParameter("stationAddress"));
+        station.setFirstPhone(request.getParameter("stationPhone").isBlank() ? station.getFirstPhone() : request.getParameter("stationPhone"));
+        station.setStationEmail(request.getParameter("stationEmail").isBlank() ? station.getStationEmail() : request.getParameter("stationEmail"));
+        station.setOpenTime(request.getParameter("openTime").isBlank() ? station.getOpenTime() : LocalTime.parse(request.getParameter("openTime")));
+        station.setCloseTime(request.getParameter("closeTime").isBlank() ? station.getCloseTime() : LocalTime.parse(request.getParameter("closeTime")));
+        stationService.updateStation(station);
+        return "redirect:/owneraccount";
+    }
 
+    @PostMapping(value = "/owneraccount/deleteService")
+    public String deleteService(HttpServletRequest request) {
+        stationService.deleteStation(Long.parseLong(request.getParameter("stationId")));
+        return "redirect:/owneraccount";
+    }
 }

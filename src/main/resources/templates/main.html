@@ -98,17 +98,13 @@
                         </div>
                         <p class="card-text">
                             <strong>&nbspГрафик работы</strong>:
-                            <input type="text" id="open_time" name="open_time" th:value="${station.openTime}" readonly/>
-                            - <input type="text" id="close_time" name="close_time" th:value="${station.closeTime}"
-                                     readonly/>
+                            <a th:text="${station.openTime}"></a> - <a th:text="${station.closeTime}"></a>
                             <br><strong>&nbspАдрес</strong>:
-                            <input type="text" id="address" name="address" th:value="${station.address} " readonly/>
+                            <a th:text="${station.address}"></a>
                             <br><strong>&nbspНомера телефонов</strong>:
-                            <input type="text" id="firstPhone" name="firstPhone" th:value="${station.firstPhone}"
-                                   readonly/>
+                            <a th:text="${station.firstPhone}"></a>
                             <br><strong>&nbspЭлектронная почта</strong>:
-                            <input type="text" id="stationEmail" name="stationEmail" th:value="${station.stationEmail}"
-                                   readonly/>
+                            <a th:text="${station.stationEmail}"></a>
                         </p>
                         <!-- Кнопка заглушка при неавторизации  -->
                         <div th:if="${isRegistry != true}">

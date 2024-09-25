@@ -48,8 +48,6 @@ public class MainController {
             model.addAttribute("isRegistry", true);
         }
         model.addAttribute("stations", stationService.getStations());
-        model.addAttribute("date", today);
-        model.addAttribute("", slotService.getEmptySlots(123, today));
         log.info("Отображение главной страницы");
         return "main";
     }
@@ -102,11 +100,5 @@ public class MainController {
                 )
         );
         return "redirect:/";
-    }
-
-    @PostMapping(value = "/deleteOrder")
-    public String deleteOrder(HttpServletRequest request) {
-        orderService.deleteOrder(Long.parseLong(request.getParameter("orderId")));
-        return "redirect:/clientaccount";
     }
 }

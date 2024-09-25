@@ -24,9 +24,14 @@ public class OrderController {
 
     @GetMapping(value = "/stationList")
     public String getOrders(Model model, HttpServletRequest request) {
-        Station station = stationService.getStationById((Long.parseLong(request.getParameter("id"))));
+        Station station = stationService.getStationById((Long.parseLong(request.getParameter("stationId"))));
         List<Order> orderList = orderService.getAllOrders().stream()
                 .filter(e -> e.getStation().getId().equals(station.getId())).toList();
+        if (orderList.isEmpty()) {
+            model.addAttribute("ordersIsEmpty", true);
+        } else {
+            model.addAttribute("ordersIsEmpty", false);
+        }
         model.addAttribute("station", station);
         model.addAttribute("orderList", orderList);
         return "stationList";

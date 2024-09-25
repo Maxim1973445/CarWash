@@ -113,4 +113,10 @@ public class ClientController {
         logService.writeLog(message, LogStatus.INFO, "редактирование пользователя");
         return "redirect:/clientaccount";
     }
+
+    @PostMapping(value = "/deleteOrder")
+    public String deleteOrder(HttpServletRequest request) {
+        orderService.deleteOrder(Long.parseLong(request.getParameter("orderId")));
+        return "redirect:/clientaccount";
+    }
 }
