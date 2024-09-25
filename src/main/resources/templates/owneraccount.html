@@ -76,9 +76,9 @@
             </div>
             <!-- Кнопки -->
             <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Редактировать профиль</a>
-            <a href="#" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addStationModal">Добавить мойку</a>
+            <a href="#" class="btn btn-primary ms-2 mb-2" data-bs-toggle="modal" data-bs-target="#addStationModal">Добавить мойку</a>
             <!-- Кнопка статистики -->
-            <a href="#" class="btn btn-primary ms-2">Посмотреть статистику</a>
+            <a href="#" class="btn btn-primary">Посмотреть статистику</a>
         </div>
     </div>
 
@@ -107,8 +107,6 @@
                     </form>
                     <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editCarWashModal"
                        onclick="setStationId(${station.id})">Редактировать данные об автомойке</a>
-                    <!-- Ссылка для перехода на страницу station.list -->
-                    <a href="/station/list?stationId=${station.id}" class="btn btn-secondary">Информация о заказах</a>
                 </div>
             </div>
         </div>
