@@ -94,6 +94,8 @@ public class StationServiceImpl implements StationService {
     }
 
     public Long count(){
-        return stationRepository.count();
+        List<Long> idList = new ArrayList<>();
+        stationRepository.findAll().forEach(e->idList.add(e.getId()));
+        return idList.stream().max(Long::compareTo).orElse((long)0);
     }
 }

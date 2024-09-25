@@ -165,6 +165,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Long count(){
-        return orderRepository.count();
+        List<Long> idList = new ArrayList<>();
+        orderRepository.findAll().forEach(e->idList.add(e.getId()));
+        return idList.stream().max(Long::compareTo).orElse((long)0);
+    }
+
+    public OrderStatus getOrderStatus(String value) {
+        return switch (value) {
+            case "NEW" -> OrderStatus.OPEN;
+            case "IN_PROGRESS" -> OrderStatus.INPROGRESS;
+            case "COMPLETED" -> OrderStatus.COMPLETED;
+            case "CANCELLED" -> OrderStatus.CANCELLED;
+            default -> null;
+        };
     }
 }

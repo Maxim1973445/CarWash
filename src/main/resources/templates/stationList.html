@@ -30,8 +30,10 @@
                 <img src="/static/CarWashLogo.jpg" width="60" height="60"/>
                 <strong>&nbsp CarWash</strong>
             </a>
-            <a href="/owneraccount" class="btn btn-outline-light ms-auto">Назад</a>
-            <a href="/logout" class="btn btn-outline-light ms-auto">Выйти</a>
+            <div style="float: right">
+                <a href="/owneraccount" class="btn btn-outline-light ms-auto">Назад</a>
+                <a href="/logout" class="btn btn-outline-light ms-auto">Выйти</a>
+            </div>
         </div>
     </div>
 </header>
@@ -39,7 +41,8 @@
 <main class="container py-4">
     <h1 class="h3 mb-3 fw-normal" th:text="${station.stationName}"></h1>
     <p class="mb-3">Адрес: <span th:text="${station.address}"></span></p>
-    <p class="mb-3">Время работы: с <span th:text="${station.openTime}"></span> до <span th:text="${station.closeTime}"></span></p>
+    <p class="mb-3">Время работы: с <span th:text="${station.openTime}"></span> до <span
+            th:text="${station.closeTime}"></span></p>
 
     <!-- Список заказов для текущей автомойки -->
     <h2 class="h4 mb-3">Заказы</h2>
@@ -53,23 +56,31 @@
                 <h5 class="card-title">Заказ #<span th:text="${order.id}"></span></h5>
 
                 <!-- Форма для изменения статуса -->
-                <form action="/order/updateStatus" method="post" class="d-flex align-items-center mb-3">
+                <form action="/stationList/updateStatus" method="post" class="d-flex align-items-center mb-3">
                     <input type="hidden" name="orderId" th:value="${order.id}">
+                    <input type="hidden" name="stationId" th:value="${station.id}">
                     <label for="status" class="form-label me-2">Статус:</label>
                     <select id="status" name="status" class="form-select w-auto me-2" required>
-                        <option value="NEW" th:selected="${order.orderStatus == 'NEW'}">Новый</option>
-                        <option value="IN_PROGRESS" th:selected="${order.orderStatus == 'IN_PROGRESS'}">В процессе</option>
-                        <option value="COMPLETED" th:selected="${order.orderStatus == 'COMPLETED'}">Завершен</option>
-                        <option value="CANCELLED" th:selected="${order.orderStatus == 'CANCELLED'}">Отменен</option>
+                        <option th:if="${order.orderStatus.name() == 'OPEN'}" disabled>Новый</option>
+                        <option th:if="${order.orderStatus.name() == 'INPROGRESS'}">В процессе</option>
+                        <option th:if="${order.orderStatus.name() == 'COMPLETED'}">Завершен</option>
+                        <option th:if="${order.orderStatus.name() == 'CANCELLED'}">Отменен</option>
+                        <option value="NEW">Новый</option>
+                        <option value="IN_PROGRESS">В процессе</option>
+                        <option value="COMPLETED">Завершен</option>
+                        <option value="CANCELLED">Отменен</option>
                     </select>
                     <button type="submit" class="btn btn-primary btn-sm">Изменить статус</button>
                 </form>
 
                 <p class="card-text">Время начала: <span th:text="${order.startTime.getHour()}+':00'"></span></p>
                 <p class="card-text">Время завершения: <span th:text="${order.endTime.getHour()}+':00'"></span></p>
-                <p class="card-text">Дата заказа: <span th:text="${order.orderDate.getYear()}"></span></p>
+                <p class="card-text">Дата заказа: <span
+                        th:text="${order.orderDate.getDayOfMonth()}+' '+${order.orderDate.getMonth()}+' '+${order.orderDate.getYear()}"></span>
+                </p>
                 <p class="card-text">Услуга: <span th:text="${order.service.name}"></span></p>
-                <p class="card-text">Автомобиль: <span th:text="${order.car.make} + ' ' + ${order.car.model}"></span></p>
+                <p class="card-text">Автомобиль: <span th:text="${order.car.make} + ' ' + ${order.car.model}"></span>
+                </p>
             </div>
         </div>
     </div>

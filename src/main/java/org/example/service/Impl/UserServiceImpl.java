@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -121,6 +122,8 @@ public class UserServiceImpl implements UserService {
     }
 
     public Long count(){
-        return personRepository.count();
+        List<Long> idList = new ArrayList<>();
+        personRepository.findAll().forEach(e->idList.add(e.getId()));
+        return idList.stream().max(Long::compareTo).orElse((long)0);
     }
 }

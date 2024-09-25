@@ -9,13 +9,19 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
 public class LogServiceImpl implements LogService {
     @Override
     public Boolean writeLog(String log, LogStatus status, String operationName) {
-        long count = logRepository.count();
+
+        List<Long> idList = new ArrayList<>();
+        logRepository.findAll().forEach(e->idList.add(e.getId()));
+        long count = idList.stream().max(Long::compareTo).orElse((long)0);
+
         Log logItem = new Log(
                 ++count,
                 LocalDateTime.now(),

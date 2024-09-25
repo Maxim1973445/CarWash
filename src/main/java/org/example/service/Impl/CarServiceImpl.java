@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -124,7 +126,9 @@ public class CarServiceImpl implements CarService {
     }
 
     public Long count() {
-        return carRepository.count();
+        List<Long> idList = new ArrayList<>();
+        carRepository.findAll().forEach(e->idList.add(e.getId()));
+        return idList.stream().max(Long::compareTo).orElse((long)0);
     }
 
     public CarType getType(String value) {

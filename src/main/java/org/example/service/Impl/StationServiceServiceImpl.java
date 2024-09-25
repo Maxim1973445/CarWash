@@ -8,7 +8,10 @@ import org.example.service.StationServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -58,11 +61,13 @@ public class StationServiceServiceImpl implements StationServiceService {
     }
 
     public Long count() {
-        return stationServiceRepository.count();
+        List<Long> idList = new ArrayList<>();
+        stationServiceRepository.findAll().forEach(e->idList.add(e.getId()));
+        return idList.stream().max(Long::compareTo).orElse((long)0);
     }
 
     public StationService factoryService(String value) {
-        Long count = stationServiceRepository.count();
+        long count = stationServiceRepository.count();
         switch (value) {
             case "wash":
                 return new StationService(
@@ -74,14 +79,14 @@ public class StationServiceServiceImpl implements StationServiceService {
             case "polish":
                 return new StationService(
                         ++count,
-                        "Мойка",
+                        "Полировка",
                         5000,
                         null
                 );
             case "cleaning":
                 return new StationService(
                         ++count,
-                        "Мойка",
+                        "Уборка салона",
                         2400,
                         null
                 );
@@ -89,5 +94,7 @@ public class StationServiceServiceImpl implements StationServiceService {
                 return null;
         }
     }
+
+
 
 }
