@@ -59,7 +59,6 @@ public class StatisticController {
 
     @PostMapping(value = "/clientsByStationBetween")
     public String getClientsStatistic(@RequestParam("stationid") String stationId,
-                                      @RequestParam("personid") String personId,
                                       @RequestParam("startDate") String startDate,
                                       @RequestParam("endDate") String endDate,
                                       Model model) {
@@ -69,7 +68,6 @@ public class StatisticController {
         Long statId = Long.parseLong(stationId);
         LocalDate startDateTime = LocalDate.parse(startDate);
         LocalDate endDateTime = LocalDate.parse(endDate);
-        Long persId = Long.parseLong(personId);
         if (startDateTime.isAfter(endDateTime)) {
             model.addAttribute("message", "Дата начала выбора не может быть позже даты окончания!");
             return "statistic";
