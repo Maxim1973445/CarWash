@@ -35,8 +35,8 @@ public class SlotServiceImpl implements SlotService {
         if (station == null) {
             return null;
         }
-        LocalDateTime openTime = LocalDateTime.of(LocalDate.now(), station.getOpenTime());
-        LocalDateTime closeTime = LocalDateTime.of(LocalDate.now(), station.getCloseTime());
+        LocalDateTime openTime = LocalDateTime.of(date, station.getOpenTime());
+        LocalDateTime closeTime = LocalDateTime.of(date, station.getCloseTime());
         List<LocalDateTime> slots = new ArrayList<>();
         while (openTime.isBefore(closeTime)) {
             slots.add(openTime);
