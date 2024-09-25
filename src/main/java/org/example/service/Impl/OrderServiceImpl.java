@@ -164,6 +164,11 @@ public class OrderServiceImpl implements OrderService {
         return distinctOrdersBetween;
     }
 
+    @Override
+    public List<Order> getOrdersByStationId(Long stationId) {
+        return orderRepository.getOrdersByStationId(stationId);
+    }
+
     public Long count(){
         List<Long> idList = new ArrayList<>();
         orderRepository.findAll().forEach(e->idList.add(e.getId()));

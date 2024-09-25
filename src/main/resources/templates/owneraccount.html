@@ -58,7 +58,6 @@
     </div>
 </header>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
 <main class="form-owner w-100 m-auto">
 
     <div class="dashboard-header">
@@ -117,7 +116,7 @@
                         </form>
                     </div>
                     <div style="margin-left: 5px">
-                        <form action="/ordersCount">
+                        <form action="/ordersCount" method="post">
                             <input class="btn btn-primary ms-2 mb-2" type="submit" value="Статистика">
                             <input type="hidden" th:value="${station.id}" name="stationId">
                         </form>

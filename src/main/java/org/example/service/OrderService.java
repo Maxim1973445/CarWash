@@ -26,4 +26,6 @@ public interface OrderService {
 
     List<Order> getOrdersByStationBetween(Long statId, LocalDateTime startTime, LocalDateTime endTime);
     List<Person> getClientsByStationBetween(Long statId, LocalDateTime startTime, LocalDateTime endTime);
+
+    List<Order> getOrdersByStationId(Long stationId);
 }
