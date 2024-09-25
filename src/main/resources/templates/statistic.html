@@ -38,14 +38,14 @@
             </tr>
             </thead>
             <tbody>
-            <div class="table" th:each="statistic : ${statisticMap}">
+            <div class="table">
                 <tr>
-                    <td> <a th:text="${statistic.completedOrders}"></a> </td>
-                    <td> <a th:text="${statistic.inProgressOrders}"></a> </td>
-                    <td> <a th:text="${statistic.openedOrders}"></a> </td>
-                    <td> <a th:text="${statistic.cancelledOrders}"></a> </td>
-                    <td> <a th:text="${statistic.uniqueClients}"></a> </td>
-                    <td> <a th:text="${statistic.ordersPerMonth}"></a> </td>
+                    <td> <a th:text="${completedOrders}"></a> </td>
+                    <td> <a th:text="${inProgressOrders}"></a> </td>
+                    <td> <a th:text="${openedOrders}"></a> </td>
+                    <td> <a th:text="${cancelledOrders}"></a> </td>
+                    <td> <a th:text="${uniqueClients}"></a> </td>
+                    <td> <a th:text="${ordersPerMonth}"></a> </td>
                 </tr>
             </div>
             </tbody>
